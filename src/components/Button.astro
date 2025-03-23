@@ -1,0 +1,62 @@
+---
+interface Props {
+	type?: "primary" | "default" | "dashed" | "text" | "link"
+	variant?: "solid" | "outline" | "dashed" | "filled" | "text" | "link"
+	href?: string
+}
+
+const { type = "default", href, variant = "solid" } = Astro.props
+
+const isExternal = /^https?:\/\//.test(href ?? "")
+const attrs = {
+	target: isExternal ? "_blank" : undefined,
+	rel: isExternal ? "noopener noreferrer" : undefined,
+}
+---
+
+<>
+	{
+		href && (
+			<a href={href} class={`button ${type} ${variant}`} {...attrs}>
+				<slot />
+			</a>
+		)
+	}
+	{
+		!href && (
+			<button class={`button ${type} ${variant}`}>
+				<slot />
+			</button>
+		)
+	}
+</>
+
+<style>
+	a {
+		text-decoration: none;
+		height: 44px;
+		display: flex;
+		width: fit-content;
+		align-items: center;
+	}
+
+	.button {
+		height: 44px;
+		padding-inline: 1.5rem;
+		border-radius: 3rem;
+		border: none;
+		font-size: 14px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.default {
+		background-color: white;
+		outline: 1px solid #e4e4e7;
+	}
+
+	.primary {
+		background-color: black;
+		color: white;
+	}
+</style>

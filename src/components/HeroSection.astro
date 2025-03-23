@@ -1,3 +1,52 @@
+---
+import Badge from "./Badge.astro"
+import Button from "./Button.astro"
+---
+
 <div id="hero">
-    Hero
+	<div class="hero-container">
+		<Badge text="Available for work" className="badge" />
+		<h1>Jonathan Cervantes Alarcon</h1>
+		<p class="description">
+			I build modern, responsive, and user-friendly web applications with a
+			focus on clean code and great user experiences.
+		</p>
+		<div class="ctas">
+			<Button type="primary" href="#projects">View My Work</Button>
+			<Button>Contact Me</Button>
+		</div>
+	</div>
 </div>
+
+<style>
+	#hero {
+		margin: 0 auto;
+		padding: 2rem 0rem;
+
+		.hero-container {
+			max-width: 42rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			.badge {
+				margin: 0 auto;
+			}
+
+			h1 {
+				text-align: center;
+			}
+
+			.description {
+				color: #71717a;
+				text-align: center;
+			}
+
+			.ctas {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+			}
+		}
+	}
+</style>

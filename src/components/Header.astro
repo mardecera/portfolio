@@ -1,5 +1,6 @@
 ---
 import BracketsIcon from "../../public/brackets.svg"
+import MaxContainer from "../layouts/MaxContainer.astro"
 import Link from "./Link.astro"
 
 const links = [
@@ -23,36 +24,47 @@ const links = [
 ---
 
 <header id="header">
-	<div class="logo">
-		<BracketsIcon />
-		JCA
-	</div>
-	<div class="spacer">
-		{links.map((link) => <Link href={link.href}>{link.label}</Link>)}
-	</div>
+	<MaxContainer>
+		<div class="header-container">
+			<div class="logo">
+				<BracketsIcon />
+				JCA
+			</div>
+			<div class="spacer">
+				{links.map((link) => <Link href={link.href}>{link.label}</Link>)}
+			</div>
+		</div>
+	</MaxContainer>
 </header>
 
 <style>
 	#header {
-		background-color: #000;
-		color: #fff;
-		position: sticky;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1rem 1rem;
+		border-bottom: 1px solid #e4e4e7;
 
-		& .logo {
+		.header-container {
+			position: sticky;
 			display: flex;
+			justify-content: space-between;
 			align-items: center;
-			gap: 0.5rem;
-		}
+			padding: 1.5rem 1rem;
 
-		& .spacer {
-			display: flex;
-			gap: 1rem;
-			font-weight: 500;
-			font-size: 14px;
+			@media only screen and (min-width: 1080px) {
+				padding: 1.5rem 0rem;
+			}
+
+			& .logo {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-weight: 700;
+			}
+
+			& .spacer {
+				display: flex;
+				gap: 1rem;
+				font-weight: 500;
+				font-size: 14px;
+			}
 		}
 	}
 </style>

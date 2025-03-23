@@ -1,0 +1,47 @@
+---
+interface Props {
+	text: string
+	type?: "primary" | "default"
+	className?: string
+}
+
+const { text, type = "default", className } = Astro.props
+---
+
+<span class={`badge ${type} ${className ?? ""}`}
+	><div class="dot"></div>{text}</span
+>
+
+<style>
+	.badge {
+		padding: 2px 10px;
+		border-radius: 5rem;
+		font-size: 12px;
+		font-weight: 600;
+		display: flex;
+		width: fit-content;
+		gap: 4px;
+		align-items: center;
+
+		.dot {
+			display: flex;
+			width: 9px;
+			height: 9px;
+			background-color: #25bd32;
+			border-radius: 15px;
+			aspect-ratio: 1 / 1;
+		}
+	}
+
+	.default {
+		background-color: white;
+		border: 1px solid #e5e7eb;
+		color: #151516;
+	}
+
+	.primary {
+		background-color: #151516;
+		border: 1px solid #151516;
+		color: #fdfdfd;
+	}
+</style>
