@@ -1,0 +1,58 @@
+---
+import BracketsIcon from "../../public/brackets.svg"
+import Link from "./Link.astro"
+
+const links = [
+	{
+		label: "About",
+		href: "#about",
+	},
+	{
+		label: "Skills",
+		href: "#skills",
+	},
+	{
+		label: "Projects",
+		href: "#projects",
+	},
+	{
+		label: "Contact",
+		href: "#contact",
+	},
+]
+---
+
+<header id="header">
+	<div class="logo">
+		<BracketsIcon />
+		JCA
+	</div>
+	<div class="spacer">
+		{links.map((link) => <Link href={link.href}>{link.label}</Link>)}
+	</div>
+</header>
+
+<style>
+	#header {
+		background-color: #000;
+		color: #fff;
+		position: sticky;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 1rem;
+
+		& .logo {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+		}
+
+		& .spacer {
+			display: flex;
+			gap: 1rem;
+			font-weight: 500;
+			font-size: 14px;
+		}
+	}
+</style>
