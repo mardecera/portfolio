@@ -1,4 +1,12 @@
-<div class="max-container">
+---
+interface Props {
+	className?: string
+}
+
+const { className } = Astro.props
+---
+
+<div class={`max-container ${className ?? ""}`}>
 	<slot />
 </div>
 
@@ -6,5 +14,6 @@
 	.max-container {
 		max-width: 1080px;
 		margin: 0 auto;
+		padding-inline: 1rem;
 	}
 </style>

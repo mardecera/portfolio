@@ -1,0 +1,138 @@
+---
+import MaxContainer from "../layouts/MaxContainer.astro"
+import TitleOfSection from "./TitleOfSection.astro"
+import SkillCard from "./SkillCard.astro"
+import GithubOutline from "../ui/icons/GithubOutline.astro"
+
+const items = [
+	{
+		icon: "GithubOutline",
+		title: "Frontend Development",
+		description:
+			"Creating responsive and interactive user interfaces with modern frameworks and libraries.",
+		tecnologies: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Astro"],
+	},
+	{
+		icon: "GithubOutline",
+		title: "Backend Development",
+		description:
+			"Building robust server-side applications and APIs to power web applications.",
+		tecnologies: [
+			"Node.js",
+			"Express.js",
+			"MongoDB",
+			"PostgreSQL",
+			"RESTful APIs",
+		],
+	},
+	{
+		icon: "GithubOutline",
+		title: "Full Stack Development",
+		description:
+			"Integrating frontend and backend technologies to create complete web applications.",
+		tecnologies: ["MERN Stack", "TypeScript", "Vercel"],
+	},
+	{
+		icon: "GithubOutline",
+		title: "Web Performance Optimization",
+		description:
+			"Optimizing websites for speed, accessibility, and search engine visibility.",
+		tecnologies: [
+			"Lighthouse",
+			"Web Vitals",
+			"SEO",
+			"Accessibility",
+			"Performance",
+			"Analytics",
+		],
+	},
+	{
+		icon: "GithubOutline",
+		title: "Responsive Design",
+		description:
+			"Creating websites that work seamlessly across all devices and screen sizes.",
+		tecnologies: [
+			"Mobile First",
+			"Flexbox",
+			"CSS Grid",
+			"Media Queries",
+			"Adaptive UI",
+			"Cross-Browser",
+		],
+	},
+	{
+		icon: "GithubOutline",
+		title: "Tools & Workflows",
+		description:
+			"Utilizing modern development tools and practices for efficient workflow.",
+		tecnologies: ["Git", "GitHub", "VS Code", "Webpack", "Jest", "CI/CD"],
+	},
+]
+---
+
+<div id="skills">
+	<MaxContainer>
+		<div class="skills-container">
+			<div class="header">
+				<TitleOfSection>Skills</TitleOfSection>
+				<h2>
+					These are the technologies and tools I work with to bring ideas to
+					life.
+				</h2>
+			</div>
+			<div class="skills-grid">
+				{
+					items.map(({ icon, title, description, tecnologies }) => (
+						<SkillCard
+							title={title}
+							description={description}
+							tecnologies={tecnologies}
+						>
+							{icon === "GithubOutline" && <GithubOutline />}
+						</SkillCard>
+					))
+				}
+			</div>
+		</div>
+	</MaxContainer>
+</div>
+
+<style>
+	#skills {
+		width: 100%;
+		height: fit-content;
+		padding-block: 8rem;
+
+		.skills-container {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+
+			.header {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.5rem;
+
+				h2 {
+					text-align: center;
+				}
+			}
+		}
+
+		.skills-grid {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+
+			@media only screen and (min-width: 624px) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@media only screen and (min-width: 844px) {
+				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+	}
+</style>

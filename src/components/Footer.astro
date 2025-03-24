@@ -1,6 +1,9 @@
 ---
 import BracketsIcon from "../../public/brackets.svg"
 import MaxContainer from "../layouts/MaxContainer.astro"
+import GithubOutline from "../ui/icons/GithubOutline.astro"
+import LinkedinOutline from "../ui/icons/LinkedinOutline.astro"
+import Button from "./Button.astro"
 ---
 
 <footer id="footer">
@@ -16,7 +19,18 @@ import MaxContainer from "../layouts/MaxContainer.astro"
 					reservados
 				</div>
 			</div>
-			<div class="networks"></div>
+			<div class="networks">
+				<Button
+					href="https://github.com/mardecera"
+					icon={GithubOutline}
+					type="text"
+				/>
+				<Button
+					href="https://www.linkedin.com/in/mardecera/"
+					icon={LinkedinOutline}
+					type="text"
+				/>
+			</div>
 		</div>
 	</MaxContainer>
 </footer>
@@ -25,11 +39,20 @@ import MaxContainer from "../layouts/MaxContainer.astro"
 	#footer {
 		margin-top: auto;
 		border-top: 1px solid #e4e4e7;
+		background-color: white;
 
 		.footer-container {
 			display: flex;
-			justify-content: space-between;
-			padding: 4rem 1rem;
+			align-items: center;
+			padding: 4rem 0rem;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: center;
+
+			@media only screen and (min-width: 640px) {
+				gap: 3rem;
+				justify-content: space-between;
+			}
 
 			@media only screen and (min-width: 1080px) {
 				padding: 4rem 0rem;
@@ -41,11 +64,26 @@ import MaxContainer from "../layouts/MaxContainer.astro"
 			display: flex;
 			align-items: center;
 			gap: 0.5rem;
+			justify-content: center;
+
+			@media only screen and (min-width: 600px) {
+				justify-content: initial;
+			}
 		}
 
 		.copy {
 			color: #71717a;
 			font-size: 0.875rem;
+			text-align: center;
+
+			@media only screen and (min-width: 600px) {
+				text-align: initial;
+			}
+		}
+
+		.networks {
+			display: flex;
+			gap: 1rem;
 		}
 	}
 </style>

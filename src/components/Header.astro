@@ -40,13 +40,16 @@ const links = [
 <style>
 	#header {
 		border-bottom: 1px solid #e4e4e7;
+		position: sticky;
+		top: 0;
+		background-color: white;
 
 		.header-container {
 			position: sticky;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 1.5rem 1rem;
+			padding: 1.5rem 0rem;
 
 			@media only screen and (min-width: 1080px) {
 				padding: 1.5rem 0rem;
@@ -60,10 +63,14 @@ const links = [
 			}
 
 			& .spacer {
-				display: flex;
-				gap: 1rem;
-				font-weight: 500;
-				font-size: 14px;
+				display: none;
+
+				@media only screen and (min-width: 425px) {
+					display: flex;
+					gap: 1rem;
+					font-weight: 500;
+					font-size: 14px;
+				}
 			}
 		}
 	}

@@ -1,33 +1,44 @@
 ---
+import MaxContainer from "../layouts/MaxContainer.astro"
 import Badge from "./Badge.astro"
 import Button from "./Button.astro"
 ---
 
 <div id="hero">
-	<div class="hero-container">
-		<Badge text="Available for work" className="badge" />
-		<h1>Jonathan Cervantes Alarcon</h1>
-		<p class="description">
-			I build modern, responsive, and user-friendly web applications with a
-			focus on clean code and great user experiences.
-		</p>
-		<div class="ctas">
-			<Button type="primary" href="#projects">View My Work</Button>
-			<Button>Contact Me</Button>
+	<MaxContainer className="hero-maxcontainer">
+		<div class="hero-container">
+			<Badge text="Available for work" className="badge" />
+			<h1>Jonathan Cervantes Alarcón</h1>
+			<p class="description">
+				I build modern, responsive, and user-friendly web applications with a
+				focus on clean code and great user experiences.
+			</p>
+			<div class="ctas">
+				<Button type="primary" href="#projects">View My Work</Button>
+				<Button>Contact Me</Button>
+			</div>
 		</div>
-	</div>
+	</MaxContainer>
 </div>
 
 <style>
 	#hero {
 		margin: 0 auto;
 		padding: 2rem 0rem;
+		width: 100%;
+
+		.hero-maxcontainer {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+		}
 
 		.hero-container {
 			max-width: 42rem;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			margin: 0 auto;
+			padding-top: 10%;
 
 			.badge {
 				margin: 0 auto;
@@ -46,6 +57,8 @@ import Button from "./Button.astro"
 				display: flex;
 				gap: 1rem;
 				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 1rem;
 			}
 		}
 	}

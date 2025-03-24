@@ -1,0 +1,101 @@
+---
+import MaxContainer from "../layouts/MaxContainer.astro"
+import TitleOfSection from "./TitleOfSection.astro"
+import Button from "./Button.astro"
+import DownloadOutline from "../ui/icons/DownloadOutline.astro"
+---
+
+<div id="aboutme">
+	<MaxContainer>
+		<div class="aboutme-container">
+			<div class="photo">
+				<picture class="profile">
+					<img
+						src="/default-square.svg"
+						alt="Jonathan Cervantes Alarcón"
+						width="500px"
+						height="500px"
+						alt="Descripción"
+					/>
+				</picture>
+			</div>
+			<div class="info">
+				<TitleOfSection>About Me</TitleOfSection>
+				<h2>Passionate Web Designer & Developer</h2>
+				<div class="description">
+					<p>
+						With over 5 years of experience in creating stunning websites and
+						digital experiences, I help businesses stand out in the digital
+						landscape.
+					</p>
+					<p>
+						I specialize in creating user-centered designs that not only look
+						beautiful but also drive conversions and results. My approach
+						combines creativity with strategic thinking to deliver websites that
+						truly work for my clients.
+					</p>
+					<p>
+						Whether you need a complete website redesign, a new brand identity,
+						or help optimizing your current site, I'm here to bring your vision
+						to life.
+					</p>
+				</div>
+				<div class="cta">
+					<Button href="/favicon.svg"> Download CV <DownloadOutline /> </Button>
+				</div>
+			</div>
+		</div>
+	</MaxContainer>
+</div>
+
+<style>
+	#aboutme {
+		width: 100%;
+		padding-block: 8rem;
+		background-color: white;
+	}
+
+	.aboutme-container {
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+
+		@media only screen and (min-width: 640px) {
+			flex-direction: row;
+			gap: 2rem;
+		}
+
+		.photo {
+			max-width: 100%;
+			aspect-ratio: 16 / 9;
+
+			@media only screen and (min-width: 640px) {
+				max-width: 50%;
+			}
+
+			.profile {
+				width: 100%;
+				height: 100%;
+
+				img {
+					width: 100%;
+					height: 100%;
+					aspect-ratio: 1 / 1;
+					object-fit: cover;
+				}
+			}
+		}
+
+		.info {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+
+			.description {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+		}
+	}
+</style>

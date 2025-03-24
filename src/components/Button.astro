@@ -1,14 +1,18 @@
 ---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js"
+
 interface Props {
 	type?: "primary" | "default" | "dashed" | "text" | "link"
 	variant?: "solid" | "outline" | "dashed" | "filled" | "text" | "link"
 	href?: string
+	icon?: AstroComponentFactory
 }
 
-const { type = "default", href, variant = "solid" } = Astro.props
+const { type = "default", href, variant = "solid", icon: Icon } = Astro.props
 
 const isExternal = /^https?:\/\//.test(href ?? "")
 const attrs = {
+	download: isExternal ? undefined : href,
 	target: isExternal ? "_blank" : undefined,
 	rel: isExternal ? "noopener noreferrer" : undefined,
 }
@@ -16,14 +20,28 @@ const attrs = {
 
 <>
 	{
-		href && (
+		Icon && href && (
+			<a href={href} class={`button-icon ${type} ${variant}`} {...attrs}>
+				<Icon />
+			</a>
+		)
+	}
+	{
+		Icon && !href && (
+			<button class={`button-icon ${type} ${variant}`}>
+				<Icon />
+			</button>
+		)
+	}
+	{
+		!Icon && href && (
 			<a href={href} class={`button ${type} ${variant}`} {...attrs}>
 				<slot />
 			</a>
 		)
 	}
 	{
-		!href && (
+		!Icon && !href && (
 			<button class={`button ${type} ${variant}`}>
 				<slot />
 			</button>
@@ -38,6 +56,27 @@ const attrs = {
 		display: flex;
 		width: fit-content;
 		align-items: center;
+		color: inherit;
+	}
+
+	.button-icon {
+		border: none;
+		width: 3rem;
+		height: 3rem;
+		max-width: 3rem;
+		max-height: 3rem;
+		aspect-ratio: 1 / 1;
+		border-radius: 4rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+
+		&:focus,
+		&:focus-visible {
+			outline: 5px solid rgba(143, 143, 150, 0.3);
+			outline-offset: 0;
+		}
 	}
 
 	.button {
@@ -48,6 +87,15 @@ const attrs = {
 		font-size: 14px;
 		font-weight: 600;
 		cursor: pointer;
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		&:focus,
+		&:focus-visible {
+			outline: 5px solid rgba(143, 143, 150, 0.3);
+			outline-offset: 0;
+		}
 	}
 
 	.default {
@@ -58,5 +106,13 @@ const attrs = {
 	.primary {
 		background-color: black;
 		color: white;
+	}
+
+	.text {
+		background-color: transparent;
+
+		&:hover {
+			background-color: #f4f4f5;
+		}
 	}
 </style>
