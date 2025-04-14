@@ -11,7 +11,12 @@
 		"biome:fix": "biome check --write ./src"
 	},
 	"dependencies": {
-		"astro": "^5.5.4"
+		"@astrojs/react": "^4.2.3",
+		"@types/react": "^19.1.1",
+		"@types/react-dom": "^19.1.2",
+		"astro": "^5.5.4",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -20,6 +25,9 @@
 	"pnpm": {
 		"ignoredBuiltDependencies": [
 			"@biomejs/biome"
+		],
+		"onlyBuiltDependencies": [
+			"lefthook"
 		]
 	}
 }

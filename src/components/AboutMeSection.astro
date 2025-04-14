@@ -51,8 +51,12 @@ import TitleOfSection from "./TitleOfSection.astro"
 <style>
 	#aboutme {
 		width: 100%;
-		padding-block: 8rem;
+		padding-block: 4rem;
 		background-color: white;
+
+		@media only screen and (min-width: 640px) {
+			padding-block: 8rem;
+		}
 	}
 
 	.aboutme-container {

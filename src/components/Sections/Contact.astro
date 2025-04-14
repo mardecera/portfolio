@@ -1,0 +1,104 @@
+---
+import MaxContainer from "../../layouts/MaxContainer.astro"
+import TitleOfSection from "../TitleOfSection.astro"
+import { contact } from "../../constants/contact"
+import EmailOutline from "../../ui/icons/EmailOutline.astro"
+import PhoneOutline from "../../ui/icons/PhoneOutline.astro"
+import MarkOutline from "../../ui/icons/MarkOutline.astro"
+import ContatcForm from "../react/ContactForm"
+---
+
+<div id="contact">
+	<MaxContainer>
+		<div class="container">
+			<TitleOfSection>Get In Touch</TitleOfSection>
+			<div class="content">
+				<div class="info">
+					<p>
+						I'm currently available for freelance work and full-time positions.
+						If you have a project that needs some creative touch, I'd love to
+						hear about it.
+					</p>
+					<div class="contacts">
+						<ul>
+							<li>
+								<span>
+									<EmailOutline />
+									<span>{contact.email}</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<PhoneOutline />
+									<span>{contact.phone}</span>
+								</span>
+							</li>
+							<li>
+								<span>
+									<MarkOutline />
+									<span>{contact.address}</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="form">
+					<div class="content">
+						<ContatcForm client:load />
+					</div>
+				</div>
+			</div>
+		</div>
+	</MaxContainer>
+</div>
+
+<style>
+	#contact {
+		background-color: #f4f4f5;
+		padding-block: 2rem;
+
+		@media only screen and (min-width: 640px) {
+			padding-block: 4rem;
+		}
+
+		& .container {
+			& .content {
+				display: flex;
+				gap: 2rem;
+				margin-top: 1rem;
+
+				.info {
+					flex: 1;
+					display: flex;
+					gap: 1rem;
+					flex-direction: column;
+
+					& > p {
+						color: #71717a;
+					}
+
+					& .contacts {
+						& ul {
+							list-style: none;
+							display: flex;
+							flex-direction: column;
+							gap: 0.5rem;
+
+							& li {
+								& > span {
+									display: flex;
+									gap: 1rem;
+									align-items: center;
+								}
+							}
+						}
+					}
+				}
+
+				.form {
+					flex: 1;
+				}
+			}
+		}
+	}
+</style>

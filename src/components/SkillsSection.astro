@@ -3,71 +3,7 @@ import MaxContainer from "../layouts/MaxContainer.astro"
 import GithubOutline from "../ui/icons/GithubOutline.astro"
 import SkillCard from "./SkillCard.astro"
 import TitleOfSection from "./TitleOfSection.astro"
-
-const items = [
-	{
-		icon: "GithubOutline",
-		title: "Frontend Development",
-		description:
-			"Creating responsive and interactive user interfaces with modern frameworks and libraries.",
-		tecnologies: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Astro"],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Backend Development",
-		description:
-			"Building robust server-side applications and APIs to power web applications.",
-		tecnologies: [
-			"Node.js",
-			"Express.js",
-			"MongoDB",
-			"PostgreSQL",
-			"RESTful APIs",
-		],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Full Stack Development",
-		description:
-			"Integrating frontend and backend technologies to create complete web applications.",
-		tecnologies: ["MERN Stack", "TypeScript", "Vercel"],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Web Performance Optimization",
-		description:
-			"Optimizing websites for speed, accessibility, and search engine visibility.",
-		tecnologies: [
-			"Lighthouse",
-			"Web Vitals",
-			"SEO",
-			"Accessibility",
-			"Performance",
-			"Analytics",
-		],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Responsive Design",
-		description:
-			"Creating websites that work seamlessly across all devices and screen sizes.",
-		tecnologies: [
-			"Mobile First",
-			"Flexbox",
-			"CSS Grid",
-			"Media Queries",
-			"Adaptive UI",
-			"Cross-Browser",
-		],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Tools & Workflows",
-		description:
-			"Utilizing modern development tools and practices for efficient workflow.",
-		tecnologies: ["Git", "GitHub", "VS Code", "Webpack", "Jest", "CI/CD"],
-	},
-]
+import { skills } from "../constants/skills"
 ---
 
 <div id="skills">
@@ -82,7 +18,7 @@ const items = [
 			</div>
 			<div class="skills-grid">
 				{
-					items.map(({ icon, title, description, tecnologies }) => (
+					skills.map(({ icon, title, description, tecnologies }) => (
 						<SkillCard
 							title={title}
 							description={description}
@@ -101,7 +37,11 @@ const items = [
 	#skills {
 		width: 100%;
 		height: fit-content;
-		padding-block: 8rem;
+		padding-block: 4rem;
+
+		@media only screen and (min-width: 624px) {
+			padding-block: 8rem;
+		}
 
 		.skills-container {
 			display: flex;

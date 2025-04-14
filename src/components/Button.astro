@@ -56,7 +56,7 @@ const attrs = {
 		display: flex;
 		width: fit-content;
 		align-items: center;
-		color: inherit;
+		color: #18181b;
 	}
 
 	.button-icon {
@@ -90,6 +90,7 @@ const attrs = {
 		display: flex;
 		gap: 1rem;
 		align-items: center;
+		color: #18181b;
 
 		&:focus,
 		&:focus-visible {
@@ -101,11 +102,19 @@ const attrs = {
 	.default {
 		background-color: white;
 		outline: 1px solid #e4e4e7;
+
+		&:hover {
+			background-color: #f4f4f5;
+		}
 	}
 
 	.primary {
 		background-color: black;
 		color: white;
+
+		&:hover {
+			background-color: #18181bfe;
+		}
 	}
 
 	.text {

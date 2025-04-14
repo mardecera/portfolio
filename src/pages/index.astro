@@ -1,8 +1,11 @@
 ---
 import AboutMeSection from "../components/AboutMeSection.astro"
+import Banner from "../components/Banner.astro"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import HeroSection from "../components/HeroSection.astro"
+import Contact from "../components/Sections/Contact.astro"
+import Projects from "../components/Sections/Projects.astro"
 import SkillsSection from "../components/SkillsSection.astro"
 import Layout from "../layouts/Layout.astro"
 ---
@@ -13,6 +16,12 @@ import Layout from "../layouts/Layout.astro"
 		<HeroSection />
 		<AboutMeSection />
 		<SkillsSection />
+		<Projects />
+		<Banner
+			title="Ready to bring your ideas to life?"
+			description="Let's collaborate to create something amazing together. I'm currently available for new projects."
+		/>
+		<Contact />
 		<Footer />
 	</div>
 </Layout>

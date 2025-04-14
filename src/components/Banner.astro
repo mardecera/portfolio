@@ -1,0 +1,54 @@
+---
+import MaxContainer from "../layouts/MaxContainer.astro"
+import Button from "./Button.astro"
+
+interface Props {
+	title: string
+	description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<div id="banner">
+	<MaxContainer>
+		<div class="container">
+			<div class="info">
+				<h1>{title}</h1>
+				<p>{description}</p>
+			</div>
+			<div class="cta">
+				<Button href="/contact">Get in Touch</Button>
+			</div>
+		</div>
+	</MaxContainer>
+</div>
+
+<style>
+	#banner {
+		background-color: #18181b;
+
+		& .container {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 1rem;
+			justify-content: space-between;
+			align-items: center;
+			padding-block: 3rem;
+			color: white;
+
+			& .info {
+				& h1 {
+					font-size: 1.875rem;
+					line-height: 2.25rem;
+					margin: 0;
+				}
+
+				& p {
+					max-width: 28rem;
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
+</style>
