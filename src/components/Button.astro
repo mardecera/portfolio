@@ -6,13 +6,22 @@ interface Props {
 	variant?: "solid" | "outline" | "dashed" | "filled" | "text" | "link"
 	href?: string
 	icon?: AstroComponentFactory
+	download?: boolean
 }
 
-const { type = "default", href, variant = "solid", icon: Icon } = Astro.props
+const {
+	type = "default",
+	href,
+	icon: Icon,
+	download,
+	variant = "solid",
+} = Astro.props
+
+const hasSlot = Astro.slots.has("default")
 
 const isExternal = /^https?:\/\//.test(href ?? "")
+
 const attrs = {
-	download: isExternal ? undefined : href,
 	target: isExternal ? "_blank" : undefined,
 	rel: isExternal ? "noopener noreferrer" : undefined,
 }
@@ -20,31 +29,24 @@ const attrs = {
 
 <>
 	{
-		Icon && href && (
-			<a href={href} class={`button-icon ${type} ${variant}`} {...attrs}>
-				<Icon />
-			</a>
-		)
-	}
-	{
-		Icon && !href && (
-			<button class={`button-icon ${type} ${variant}`}>
-				<Icon />
-			</button>
-		)
-	}
-	{
-		!Icon && href && (
-			<a href={href} class={`button ${type} ${variant}`} {...attrs}>
-				<slot />
-			</a>
-		)
-	}
-	{
-		!Icon && !href && (
-			<button class={`button ${type} ${variant}`}>
+		!href && (
+			<button class={`button ${type} ${variant} ${hasSlot ? "" : "only-icon"}`}>
+				{Icon && <Icon />}
 				<slot />
 			</button>
+		)
+	}
+	{
+		href && (
+			<a
+				href={href}
+				class={`button ${type} ${variant} ${hasSlot ? "" : "only-icon"}`}
+				download={download}
+				{...attrs}
+			>
+				{Icon && <Icon />}
+				<slot />
+			</a>
 		)
 	}
 </>
@@ -57,26 +59,6 @@ const attrs = {
 		width: fit-content;
 		align-items: center;
 		color: #18181b;
-	}
-
-	.button-icon {
-		border: none;
-		width: 3rem;
-		height: 3rem;
-		max-width: 3rem;
-		max-height: 3rem;
-		aspect-ratio: 1 / 1;
-		border-radius: 4rem;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-
-		&:focus,
-		&:focus-visible {
-			outline: 5px solid rgba(143, 143, 150, 0.3);
-			outline-offset: 0;
-		}
 	}
 
 	.button {
@@ -101,7 +83,7 @@ const attrs = {
 
 	.default {
 		background-color: white;
-		outline: 1px solid #e4e4e7;
+		border: 1px solid #e4e4e7;
 
 		&:hover {
 			background-color: #f4f4f5;
@@ -123,5 +105,13 @@ const attrs = {
 		&:hover {
 			background-color: #f4f4f5;
 		}
+	}
+
+	.only-icon {
+		padding-inline: 0px !important;
+		width: 44px;
+		height: 44px;
+		aspect-ratio: 1 / 1;
+		justify-content: center;
 	}
 </style>

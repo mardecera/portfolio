@@ -6,7 +6,7 @@ import Link from "./Link.astro"
 const links = [
 	{
 		label: "About",
-		href: "#about",
+		href: "#aboutme",
 	},
 	{
 		label: "Skills",
@@ -26,10 +26,10 @@ const links = [
 <header id="header">
 	<MaxContainer>
 		<div class="header-container">
-			<div class="logo">
+			<Link href="/" className="logo">
 				<BracketsIcon />
 				JCA
-			</div>
+			</Link>
 			<div class="spacer">
 				{links.map((link) => <Link href={link.href}>{link.label}</Link>)}
 			</div>
