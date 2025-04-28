@@ -7,7 +7,7 @@ import Button from "./Button.astro"
 <div id="hero">
 	<MaxContainer className="hero-maxcontainer">
 		<div class="hero-container">
-			<Badge text="Available for work" className="badge" />
+			<Badge text="Available for work" className="badge" active />
 			<h1>Jonathan Cervantes Alarcón</h1>
 			<p class="description">
 				I build modern, responsive, and user-friendly web applications with a
@@ -26,6 +26,7 @@ import Button from "./Button.astro"
 		margin: 0 auto;
 		padding: 2rem 0rem;
 		width: 100%;
+		color: white;
 
 		.hero-maxcontainer {
 			width: 100%;
@@ -49,7 +50,6 @@ import Button from "./Button.astro"
 			}
 
 			.description {
-				color: #71717a;
 				text-align: center;
 			}
 

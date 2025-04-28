@@ -3,14 +3,15 @@ interface Props {
 	text: string
 	type?: "primary" | "default"
 	className?: string
+	active?: boolean
 }
 
-const { text, type = "default", className } = Astro.props
+const { text, type = "default", className, active } = Astro.props
 ---
 
-<span class={`badge ${type} ${className ?? ""}`}
-	><div class="dot"></div>{text}</span
->
+<span class={`badge ${type} ${className ?? ""}`}>
+	<div class=`dot ${active ? "active" : ""}`></div>{text}
+</span>
 
 <style>
 	.badge {
@@ -27,9 +28,26 @@ const { text, type = "default", className } = Astro.props
 			display: flex;
 			width: 9px;
 			height: 9px;
-			background-color: #25bd32;
+			background-color: var(--success-color);
 			border-radius: 15px;
 			aspect-ratio: 1 / 1;
+
+			&.active {
+				position: relative;
+				justify-content: center;
+				align-self: center;
+				z-index: 1;
+
+				&::before {
+					content: "";
+					width: 100%;
+					height: 100%;
+					background-color: var(--success-color-transparent);
+					border-radius: 15px;
+					position: absolute;
+					animation: pulse 1.5s infinite;
+				}
+			}
 		}
 	}
 
@@ -43,5 +61,17 @@ const { text, type = "default", className } = Astro.props
 		background-color: #151516;
 		border: 1px solid #151516;
 		color: #fdfdfd;
+	}
+
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.5);
+		}
+		100% {
+			transform: scale(1);
+		}
 	}
 </style>

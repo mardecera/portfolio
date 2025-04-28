@@ -1,0 +1,8 @@
+:root {
+	--background-color: #080316;
+	--primary-color: #6625ff;
+	--success-color: #28d336;
+	--success-color-transparent: rgba(45, 228, 60, 0.3);
+	--font-size: 16px;
+	--line-height: 1.5;
+}
