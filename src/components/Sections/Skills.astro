@@ -1,30 +1,35 @@
 ---
-import { skills } from "../constants/skills"
-import MaxContainer from "../layouts/MaxContainer.astro"
-import GithubOutline from "../ui/icons/GithubOutline.astro"
-import SkillCard from "./SkillCard.astro"
-import TitleOfSection from "./TitleOfSection.astro"
+import SkillCard from "@/components/SkillCard.astro"
+import TitleOfSection from "@/components/TitleOfSection.astro"
+import { skills } from "@/constants/skills"
+import MaxContainer from "@/layouts/MaxContainer.astro"
+import Front from "@/ui/icons/Front.astro"
+import Responsive from "@/ui/icons/Responsive.astro"
+import Tools from "@/ui/icons/Tools.astro"
 ---
 
 <div id="skills">
 	<MaxContainer>
 		<div class="skills-container">
 			<div class="header">
-				<TitleOfSection>Skills</TitleOfSection>
+				<TitleOfSection>Habilidades</TitleOfSection>
 				<h2>
-					These are the technologies and tools I work with to bring ideas to
-					life.
+					Estas son las tecnologías y herramientas con las que trabajo para dar vida a mis
+					ideas.
 				</h2>
 			</div>
 			<div class="skills-grid">
 				{
 					skills.map(({ icon, title, description, tecnologies }) => (
 						<SkillCard
+							className="card"
 							title={title}
 							description={description}
 							tecnologies={tecnologies}
 						>
-							{icon === "GithubOutline" && <GithubOutline />}
+							{icon === "Front" && <Front />}
+							{icon === "Responsive" && <Responsive />}
+							{icon === "Tools" && <Tools />}
 						</SkillCard>
 					))
 				}
@@ -38,6 +43,7 @@ import TitleOfSection from "./TitleOfSection.astro"
 		width: 100%;
 		height: fit-content;
 		padding-block: 4rem;
+		color: white;
 
 		@media only screen and (min-width: 624px) {
 			padding-block: 8rem;
@@ -66,12 +72,23 @@ import TitleOfSection from "./TitleOfSection.astro"
 			gap: 2rem;
 
 			@media only screen and (min-width: 624px) {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 2rem;
+				justify-content: center;
+
+				& .card {
+					width: calc((100% - 2rem) / 2);
+				}
 			}
 
 			@media only screen and (min-width: 844px) {
+				display: grid;
 				grid-template-columns: repeat(3, 1fr);
+
+				& .card {
+					width: 100%;
+				}
 			}
 		}
 	}

@@ -1,24 +1,24 @@
 ---
-import BracketsIcon from "../../public/brackets.svg"
-import MaxContainer from "../layouts/MaxContainer.astro"
+import BracketsIcon from "@/assets/brackets.svg"
+import MaxContainer from "@/layouts/MaxContainer.astro"
 import Link from "./Link.astro"
 
 const links = [
 	{
-		label: "About",
-		href: "#aboutme",
+		label: "Sobre mí",
+		href: "/#aboutme",
 	},
 	{
-		label: "Skills",
-		href: "#skills",
+		label: "Habilidades",
+		href: "/#skills",
 	},
 	{
-		label: "Projects",
-		href: "#projects",
+		label: "Proyectos",
+		href: "/#projects",
 	},
 	{
-		label: "Contact",
-		href: "#contact",
+		label: "Contacto",
+		href: "/#contact",
 	},
 ]
 ---
@@ -67,7 +67,7 @@ const links = [
 			& .spacer {
 				display: none;
 
-				@media only screen and (min-width: 425px) {
+				@media only screen and (min-width: 616px) {
 					display: flex;
 					gap: 2rem;
 					font-weight: 500;

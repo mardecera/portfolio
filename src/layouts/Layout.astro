@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css"
+import Footer from "@/components/Footer.astro"
+import Header from "@/components/Header.astro"
 ---
 
 <!doctype html>
@@ -18,7 +20,11 @@ import "../styles/global.css"
 		<title>Jonathan Cervantes Alarcón</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 
@@ -35,7 +41,15 @@ import "../styles/global.css"
 	body {
 		margin: 0;
 		width: 100%;
-		font-family: "Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova",
-			"Nimbus Sans", Arial, sans-serif;
+		font-family:
+			"Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		/* align-items: stretch; */
+	}
+
+	main {
+		flex: 1;
 	}
 </style>

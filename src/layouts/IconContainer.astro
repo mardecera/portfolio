@@ -1,35 +1,19 @@
 ---
 interface Props {
-	size?: "small" | "default" | "large"
+	className?: string
 }
 
-const { size = "default" } = Astro.props
-
-const vars = {
-	small: "12px",
-	default: "16px",
-	large: "24px",
-}
-
-const selectedSize = vars[size]
+const { className } = Astro.props
 ---
 
-<span class="icon-wrapper">
+<span class={className}>
 	<slot />
 </span>
 
-<style define:vars={{ selectedSize }}>
-	.icon-wrapper {
-		width: var(--selectedSize);
-		height: var(--selectedSize);
-		aspect-ratio: 1 / 1;
-		display: flex;
-		justify-content: center;
+<style>
+	span {
+		display: inline-flex;
 		align-items: center;
-
-		& svg {
-			width: 100%;
-			height: 100%;
-		}
+		justify-content: center;
 	}
 </style>

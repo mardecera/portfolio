@@ -1,28 +1,24 @@
 ---
-import AboutMeSection from "../components/AboutMeSection.astro"
-import Banner from "../components/Banner.astro"
-import Footer from "../components/Footer.astro"
-import Header from "../components/Header.astro"
-import HeroSection from "../components/HeroSection.astro"
-import Contact from "../components/Sections/Contact.astro"
-import Projects from "../components/Sections/Projects.astro"
-import SkillsSection from "../components/SkillsSection.astro"
-import Layout from "../layouts/Layout.astro"
+import Banner from "@/components/Banner.astro"
+import AboutMe from "@/components/Sections/AboutMe.astro"
+import Contact from "@/components/Sections/Contact.astro"
+import Hero from "@/components/Sections/Hero.astro"
+import Projects from "@/components/Sections/Projects.astro"
+import Skills from "@/components/Sections/Skills.astro"
+import Layout from "@/layouts/Layout.astro"
 ---
 
 <Layout>
 	<div class="content">
-		<Header />
-		<HeroSection />
-		<AboutMeSection />
-		<SkillsSection />
+		<Hero />
+		<AboutMe />
+		<Skills />
 		<Projects />
 		<Banner
-			title="Ready to bring your ideas to life?"
-			description="Let's collaborate to create something amazing together. I'm currently available for new projects."
+			title="¿Listo para hacer algo increíble?"
+			description="Vamos a crear algo increíble juntos. Estoy disponible para nuevos proyectos."
 		/>
 		<Contact />
-		<Footer />
 	</div>
 </Layout>
 

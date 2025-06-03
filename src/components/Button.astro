@@ -7,6 +7,8 @@ interface Props {
 	href?: string
 	icon?: AstroComponentFactory
 	download?: boolean
+	className?: string
+	disabled?: boolean
 }
 
 const {
@@ -15,53 +17,32 @@ const {
 	icon: Icon,
 	download,
 	variant = "solid",
+	className = "",
+	disabled,
 } = Astro.props
 
 const hasSlot = Astro.slots.has("default")
-
-const isExternal = /^https?:\/\//.test(href ?? "")
-
-const attrs = {
-	target: isExternal ? "_blank" : undefined,
-	rel: isExternal ? "noopener noreferrer" : undefined,
-}
+const isExternal = href?.startsWith("http")
+const Component = href ? "a" : "button"
+const attributes = isExternal
+	? { target: "_blank", rel: "noopener noreferrer", href: href }
+	: { href: href }
 ---
 
-<>
-	{
-		!href && (
-			<button class={`button ${type} ${variant} ${hasSlot ? "" : "only-icon"}`}>
-				{Icon && <Icon />}
-				<slot />
-			</button>
-		)
-	}
-	{
-		href && (
-			<a
-				href={href}
-				class={`button ${type} ${variant} ${hasSlot ? "" : "only-icon"}`}
-				download={download}
-				{...attrs}
-			>
-				{Icon && <Icon />}
-				<slot />
-			</a>
-		)
-	}
-</>
+<Component
+	class={`button ${className} ${type} ${variant} ${hasSlot ? "" : "only-icon"}`}
+	disabled={disabled}
+	download={download}
+	{...attributes}
+>
+	{hasSlot && <slot />}
+	{Icon && <Icon />}
+</Component>
 
 <style>
-	a {
+	a,
+	button {
 		text-decoration: none;
-		height: 44px;
-		display: flex;
-		width: fit-content;
-		align-items: center;
-		color: #18181b;
-	}
-
-	.button {
 		height: 44px;
 		padding-inline: 1.5rem;
 		border-radius: 3rem;
@@ -73,11 +54,17 @@ const attrs = {
 		gap: 1rem;
 		align-items: center;
 		color: #18181b;
+		width: fit-content;
 
 		&:focus,
 		&:focus-visible {
 			outline: 5px solid rgba(143, 143, 150, 0.3);
 			outline-offset: 0;
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			opacity: 0.5;
 		}
 	}
 

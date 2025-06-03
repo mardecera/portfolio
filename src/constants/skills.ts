@@ -1,64 +1,31 @@
 export const skills = [
 	{
-		icon: "GithubOutline",
-		title: "Frontend Development",
+		icon: "Front",
+		title: "Desarrollo Frontend",
 		description:
-			"Creating responsive and interactive user interfaces with modern frameworks and libraries.",
-		tecnologies: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Astro"],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Backend Development",
-		description:
-			"Building robust server-side applications and APIs to power web applications.",
+			"Creando interfaces de usuario interactivas y responsive con frameworks y librerías modernas.",
 		tecnologies: [
-			"Node.js",
-			"Express.js",
-			"MongoDB",
-			"PostgreSQL",
-			"RESTful APIs",
+			"HTML5",
+			"CSS3",
+			"JavaScript",
+			"React",
+			"Next.js",
+			"Astro",
+			"Ant Design",
 		],
 	},
 	{
-		icon: "GithubOutline",
-		title: "Full Stack Development",
+		icon: "Responsive",
+		title: "Diseño Responsive",
 		description:
-			"Integrating frontend and backend technologies to create complete web applications.",
-		tecnologies: ["MERN Stack", "TypeScript", "Vercel"],
+			"Creando sitios web que funcionan de manera óptima en todos los dispositivos y tamaños de pantalla.",
+		tecnologies: ["Mobile First", "Flexbox", "CSS Grid", "Media Queries"],
 	},
 	{
-		icon: "GithubOutline",
-		title: "Web Performance Optimization",
+		icon: "Tools",
+		title: "Herramientas & Flujos de Trabajo",
 		description:
-			"Optimizing websites for speed, accessibility, and search engine visibility.",
-		tecnologies: [
-			"Lighthouse",
-			"Web Vitals",
-			"SEO",
-			"Accessibility",
-			"Performance",
-			"Analytics",
-		],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Responsive Design",
-		description:
-			"Creating websites that work seamlessly across all devices and screen sizes.",
-		tecnologies: [
-			"Mobile First",
-			"Flexbox",
-			"CSS Grid",
-			"Media Queries",
-			"Adaptive UI",
-			"Cross-Browser",
-		],
-	},
-	{
-		icon: "GithubOutline",
-		title: "Tools & Workflows",
-		description:
-			"Utilizing modern development tools and practices for efficient workflow.",
-		tecnologies: ["Git", "GitHub", "VS Code", "Webpack", "Jest", "CI/CD"],
+			"Utilizando herramientas modernas y prácticas para un flujo de trabajo eficiente.",
+		tecnologies: ["Git", "GitHub", "VS Code", "CI/CD", "Scrum", "Jira"],
 	},
 ]

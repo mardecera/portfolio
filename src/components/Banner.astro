@@ -1,6 +1,6 @@
 ---
-import MaxContainer from "../layouts/MaxContainer.astro"
-import Button from "./Button.astro"
+import Button from "@/components/Button.astro"
+import MaxContainer from "@/layouts/MaxContainer.astro"
 
 interface Props {
 	title: string
@@ -18,7 +18,7 @@ const { title, description } = Astro.props
 				<p>{description}</p>
 			</div>
 			<div class="cta">
-				<Button href="/contact">Get in Touch</Button>
+				<Button href="/contact">Contactame</Button>
 			</div>
 		</div>
 	</MaxContainer>
