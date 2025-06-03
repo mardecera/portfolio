@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import MaxContainer from "@/layouts/MaxContainer.astro"
+---
+
+<Layout>
+	<section>
+		<MaxContainer>
+			<div class="container">
+				<h1>404</h1>
+				<p>Lo siento, la página que buscas no existe.</p>
+			</div>
+		</MaxContainer>
+	</section>
+</Layout>
+
+<style>
+	section {
+		text-align: center;
+		background-color: #f4f4f5;
+		width: 100%;
+		height: 90dvh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& h1 {
+			font-size: 10rem;
+			margin-block: 0rem;
+		}
+	}
+</style>
