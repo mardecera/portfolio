@@ -20,7 +20,9 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"lefthook": "^1.11.3"
+		"lefthook": "^1.11.3",
+		"prettier": "^3.5.3",
+		"prettier-plugin-astro": "^0.14.1"
 	},
 	"pnpm": {
 		"ignoredBuiltDependencies": [

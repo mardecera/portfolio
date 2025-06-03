@@ -1,9 +1,9 @@
 ---
-import BracketsIcon from "../../public/brackets.svg"
-import MaxContainer from "../layouts/MaxContainer.astro"
-import GithubOutline from "../ui/icons/GithubOutline.astro"
-import LinkedinOutline from "../ui/icons/LinkedinOutline.astro"
-import Button from "./Button.astro"
+import BracketsIcon from "@/assets/brackets.svg"
+import MaxContainer from "@/layouts/MaxContainer.astro"
+import GithubOutline from "@/ui/icons/GithubOutline.astro"
+import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
+import Button from "@/components/Button.astro"
 ---
 
 <footer id="footer">
@@ -15,16 +15,11 @@ import Button from "./Button.astro"
 					Jonathan Cervantes Alarc&oacute;n
 				</div>
 				<div class="copy">
-					© 2025 Jonathan Cervantes Alarc&oacute;n. Todos los derechos
-					reservados
+					© 2025 Jonathan Cervantes Alarc&oacute;n. Todos los derechos reservados
 				</div>
 			</div>
 			<div class="networks">
-				<Button
-					href="https://github.com/mardecera"
-					icon={GithubOutline}
-					type="text"
-				/>
+				<Button href="https://github.com/mardecera" icon={GithubOutline} type="text" />
 				<Button
 					href="https://www.linkedin.com/in/mardecera/"
 					icon={LinkedinOutline}
