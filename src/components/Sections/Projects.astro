@@ -12,7 +12,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 		<div class="container">
 			<div class="header">
 				<TitleOfSection>Proyectos</TitleOfSection>
-				<h2>Un seleccion de mis proyectos recientes y personales</h2>
+				<h2>Una selección de mis proyectos recientes y personales</h2>
 			</div>
 			<div class="content">
 				<div class="list">
@@ -35,10 +35,17 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 										</span>
 									</div>
 									<div class="links">
-										<Button type="primary" href={project?.pageUrl}>
-											View Project
+										<Button
+											href={project?.pageUrl ?? ""}
+											disabled={project?.pageUrl === null}
+										>
+											Ver Proyecto
 										</Button>
-										<Button href={project?.codeUrl} icon={GithubOutline} />
+										<Button
+											href={project?.codeUrl ?? ""}
+											disabled={project?.codeUrl === null}
+											icon={GithubOutline}
+										/>
 									</div>
 								</div>
 							</div>
@@ -46,7 +53,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 					}
 				</div>
 				<div class="all">
-					<Button href="/projects">View All Projects</Button>
+					<Button href="/projects">Ver todos los proyectos</Button>
 				</div>
 			</div>
 		</div>
@@ -116,6 +123,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 							& .info {
 								& h3 {
 									font-size: 1rem;
+									color: #18181b;
 								}
 
 								& .description {

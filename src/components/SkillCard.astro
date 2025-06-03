@@ -5,12 +5,13 @@ interface Props {
 	title: string
 	description: string
 	tecnologies: string[]
+	className?: string
 }
 
-const { title, description, tecnologies } = Astro.props
+const { title, description, tecnologies, className } = Astro.props
 ---
 
-<div class="skill-card">
+<div class={`skill-card ${className}`}>
 	<span class="icon">
 		<slot />
 	</span>
@@ -35,8 +36,8 @@ const { title, description, tecnologies } = Astro.props
 			border: 1px solid var(--primary-color);
 		}
 
-		span.icon {
-			background-color: #f5f5f5;
+		& .icon {
+			background-color: #18181b;
 			width: 3rem;
 			height: 3rem;
 			aspect-ratio: 1 / 1;
@@ -44,6 +45,7 @@ const { title, description, tecnologies } = Astro.props
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			color: #f5f5f5;
 		}
 
 		.description {
@@ -54,6 +56,10 @@ const { title, description, tecnologies } = Astro.props
 			display: flex;
 			gap: 0.5rem;
 			flex-wrap: wrap;
+		}
+
+		& h3 {
+			color: #18181b;
 		}
 	}
 </style>

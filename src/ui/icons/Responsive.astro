@@ -1,0 +1,20 @@
+---
+import IconContainer from "../../layouts/IconContainer.astro"
+import { ICON_SIZES } from "@/constants/ui"
+import type { IconSize } from "@/components/types/constants/ui"
+
+interface Props {
+	size?: IconSize
+}
+
+const { size = "default" } = Astro.props
+const svgSize = ICON_SIZES[size]
+---
+
+<IconContainer>
+	<svg width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="none">
+		<path
+			d="M3 19V10C3 9.45 3.196 8.97933 3.588 8.588C3.98 8.19667 4.45067 8.00067 5 8H8V5C8 4.45 8.196 3.97933 8.588 3.588C8.98 3.19667 9.45067 3.00067 10 3H19C19.55 3 20.021 3.196 20.413 3.588C20.805 3.98 21.0007 4.45067 21 5V19C21 19.55 20.8043 20.021 20.413 20.413C20.0217 20.805 19.5507 21.0007 19 21H5C4.45 21 3.97933 20.8043 3.588 20.413C3.19667 20.0217 3.00067 19.5507 3 19ZM16 19H19V5H10V8H14C14.55 8 15.021 8.196 15.413 8.588C15.805 8.98 16.0007 9.45067 16 10V19ZM10 19H14V10H10V19ZM5 19H8V10H5V19Z"
+			fill="currentColor"></path>
+	</svg>
+</IconContainer>

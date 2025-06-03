@@ -1,18 +1,20 @@
 ---
 import IconContainer from "../../layouts/IconContainer.astro"
+import { ICON_SIZES } from "@/constants/ui"
+import type { IconSize } from "@/components/types/constants/ui"
 
 interface Props {
-	size?: "small" | "default" | "large"
+	size?: IconSize
 }
 
 const { size = "default" } = Astro.props
+const svgSize = ICON_SIZES[size]
 ---
 
-<IconContainer size={size}>
+<IconContainer>
 	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
+		width={svgSize}
+		height={svgSize}
 		viewBox="0 0 24 24"
 		fill="none"
 		stroke="currentColor"
