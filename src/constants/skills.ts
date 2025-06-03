@@ -4,7 +4,15 @@ export const skills = [
 		title: "Desarrollo Frontend",
 		description:
 			"Creando interfaces de usuario interactivas y responsive con frameworks y librerías modernas.",
-		tecnologies: ["HTML5", "CSS3", "JavaScript", "React", "Next.js", "Astro", "Ant Design"],
+		tecnologies: [
+			"HTML5",
+			"CSS3",
+			"JavaScript",
+			"React",
+			"Next.js",
+			"Astro",
+			"Ant Design",
+		],
 	},
 	{
 		icon: "Responsive",
