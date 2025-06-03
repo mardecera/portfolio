@@ -9,8 +9,15 @@ export const skills = [
 	{
 		icon: "GithubOutline",
 		title: "Backend Development",
-		description: "Building robust server-side applications and APIs to power web applications.",
-		tecnologies: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "RESTful APIs"],
+		description:
+			"Building robust server-side applications and APIs to power web applications.",
+		tecnologies: [
+			"Node.js",
+			"Express.js",
+			"MongoDB",
+			"PostgreSQL",
+			"RESTful APIs",
+		],
 	},
 	{
 		icon: "GithubOutline",
@@ -22,7 +29,8 @@ export const skills = [
 	{
 		icon: "GithubOutline",
 		title: "Web Performance Optimization",
-		description: "Optimizing websites for speed, accessibility, and search engine visibility.",
+		description:
+			"Optimizing websites for speed, accessibility, and search engine visibility.",
 		tecnologies: [
 			"Lighthouse",
 			"Web Vitals",
@@ -35,7 +43,8 @@ export const skills = [
 	{
 		icon: "GithubOutline",
 		title: "Responsive Design",
-		description: "Creating websites that work seamlessly across all devices and screen sizes.",
+		description:
+			"Creating websites that work seamlessly across all devices and screen sizes.",
 		tecnologies: [
 			"Mobile First",
 			"Flexbox",
@@ -48,7 +57,8 @@ export const skills = [
 	{
 		icon: "GithubOutline",
 		title: "Tools & Workflows",
-		description: "Utilizing modern development tools and practices for efficient workflow.",
+		description:
+			"Utilizing modern development tools and practices for efficient workflow.",
 		tecnologies: ["Git", "GitHub", "VS Code", "Webpack", "Jest", "CI/CD"],
 	},
 ]

@@ -9,7 +9,13 @@ interface Props {
 	download?: boolean
 }
 
-const { type = "default", href, icon: Icon, download, variant = "solid" } = Astro.props
+const {
+	type = "default",
+	href,
+	icon: Icon,
+	download,
+	variant = "solid",
+} = Astro.props
 
 const hasSlot = Astro.slots.has("default")
 
