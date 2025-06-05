@@ -5,6 +5,7 @@ import Button from "@/components/Button.astro"
 import TitleOfSection from "@/components/TitleOfSection.astro"
 import MaxContainer from "@/layouts/MaxContainer.astro"
 import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
+import CV from "@/assets/cv.pdf"
 ---
 
 <div id="aboutme">
@@ -33,7 +34,7 @@ import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
 					</p>
 				</div>
 				<div class="cta">
-					<Button disabled>
+					<Button disabled download="cv.pdf" href={CV}>
 						Descargar CV <DownloadOutline />
 					</Button>
 				</div>
