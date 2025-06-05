@@ -5,6 +5,7 @@ import TitleOfSection from "@/components/TitleOfSection.astro"
 import { projects } from "@/constants/projects"
 import MaxContainer from "@/layouts/MaxContainer.astro"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
+import { Picture } from "astro:assets"
 ---
 
 <div id="projects">
@@ -20,9 +21,11 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 						projects.map((project) => (
 							<div class="project">
 								<div class="thumnail">
-									<picture>
-										<img src={project.image} alt={project.title} />
-									</picture>
+									<Picture
+										src={project.image}
+										alt={project.title}
+										formats={["webp", "avif"]}
+									/>
 								</div>
 								<div class="body">
 									<div class="info">
@@ -95,6 +98,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 						max-width: 320px;
 						display: flex;
 						flex-direction: column;
+						overflow: hidden;
 
 						& .thumnail {
 							aspect-ratio: 16 / 9;
@@ -108,7 +112,15 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 									width: 100%;
 									height: 100%;
 									object-fit: cover;
+									object-position: 0% 0%;
+									transition: transform 0.2s ease-in-out;
 								}
+							}
+						}
+
+						&:hover {
+							& img {
+								transform: scale(1.05);
 							}
 						}
 
@@ -119,6 +131,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 							gap: 1rem;
 							flex: 1;
 							justify-content: space-between;
+							border-top: 1px solid #e4e4e7;
 
 							& .info {
 								& h3 {
