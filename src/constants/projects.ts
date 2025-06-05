@@ -1,3 +1,6 @@
+import agroamymProject from "@/assets/agroamym.png"
+import pollosControlProject from "@/assets/polloscontrol.png"
+
 export const projects = [
 	{
 		title: "Pollos Control",
@@ -5,7 +8,7 @@ export const projects = [
 		technologies: ["Next.js", "TypeScript", "Ant Design", "Railway"],
 		codeUrl: null,
 		pageUrl: null,
-		image: "/default-square.svg",
+		image: pollosControlProject,
 	},
 	{
 		title: "Agro Amym",
@@ -13,6 +16,6 @@ export const projects = [
 		technologies: ["React", "TypeScript", "Vite", "Railway", "Ant Design"],
 		codeUrl: null,
 		pageUrl: null,
-		image: "/default-square.svg",
+		image: agroamymProject,
 	},
 ]
