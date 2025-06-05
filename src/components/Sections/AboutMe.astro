@@ -1,6 +1,5 @@
 ---
 import { Picture } from "astro:assets"
-import CV from "@/assets/cv.pdf"
 import DefaultSquare from "@/assets/default-square.png"
 import Button from "@/components/Button.astro"
 import TitleOfSection from "@/components/TitleOfSection.astro"
@@ -34,7 +33,7 @@ import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
 					</p>
 				</div>
 				<div class="cta">
-					<Button disabled download="cv.pdf" href={CV}>
+					<Button disabled download="cv.pdf" href="/cv.pdf">
 						Descargar CV <DownloadOutline />
 					</Button>
 				</div>
