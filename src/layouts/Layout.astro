@@ -2,6 +2,7 @@
 import "../styles/global.css"
 import Footer from "@/components/astro/Footer.astro"
 import Header from "@/components/astro/Header.astro"
+import LinkPreviewIMG from "@/assets/link-preview.png"
 ---
 
 <!doctype html>
@@ -17,6 +18,28 @@ import Header from "@/components/astro/Header.astro"
 			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
 			rel="stylesheet"
 		/>
+		<title>Jonathan Cervantes Alarcon | Frontend Developer</title>
+		<meta name="title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
+		<meta
+			name="description"
+			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://mardecera.com/" />
+		<meta property="og:title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
+		<meta
+			property="og:description"
+			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
+		/>
+		<meta property="og:image" content={LinkPreviewIMG.src} />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://mardecera.com/" />
+		<meta property="twitter:title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
+		<meta
+			property="twitter:description"
+			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
+		/>
+		<meta property="twitter:image" content={LinkPreviewIMG.src} />
 		<title>Jonathan Cervantes Alarcón</title>
 	</head>
 	<body>
