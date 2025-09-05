@@ -1,14 +1,10 @@
-# My Portfolio
+<h1 align="center">Dev Portfolio</h1>
 
-## 🧞 Commands
+![Cover](./docs/images/banner.png)
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+<p align="center">
+  <img src="https://img.shields.io/github/license/mardecera/portfolio" alt="Licencia MIT" />
+  <img src="https://img.shields.io/badge/PNPM-v0.0.1-f69220?logo=pnpm&logoColor=white" alt="PNPM" />
+  <img src="https://img.shields.io/badge/React-v19.1.0-61dafb?logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Astro-v5.5.4-8f0595?logo=astro&logoColor=white" alt="Astro" />
+</p>
