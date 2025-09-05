@@ -1,6 +1,4 @@
 ---
-import { Picture } from "astro:assets"
-import DefaultSquare from "@/assets/default-square.png"
 import Button from "@/components/Button.astro"
 import TitleOfSection from "@/components/TitleOfSection.astro"
 import MaxContainer from "@/layouts/MaxContainer.astro"
@@ -10,13 +8,6 @@ import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
 <div id="aboutme">
 	<MaxContainer>
 		<div class="aboutme-container">
-			<!-- <div class="photo">
-				<Picture
-					src={DefaultSquare}
-					alt="Jonathan Cervantes Alarcón"
-					formats={["webp", "avif"]}
-				/>
-			</div> -->
 			<div class="info">
 				<TitleOfSection>Sobre mí</TitleOfSection>
 				<h2>Desarrollador Web Apasionado</h2>
@@ -33,7 +24,7 @@ import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
 					</p>
 				</div>
 				<div class="cta">
-					<Button disabled download="cv.pdf" href="/cv.pdf">
+					<Button disabled download="jonathan-cervantes-cv.pdf" href="/cv.pdf">
 						Descargar CV <DownloadOutline />
 					</Button>
 				</div>

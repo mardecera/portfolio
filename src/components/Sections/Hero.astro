@@ -2,6 +2,10 @@
 import Badge from "@/components/Badge.astro"
 import Button from "@/components/Button.astro"
 import MaxContainer from "@/layouts/MaxContainer.astro"
+
+const phoneNumber = "+51977156464"
+const texto = "Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
+const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(texto)}`
 ---
 
 <div id="hero">
@@ -10,12 +14,12 @@ import MaxContainer from "@/layouts/MaxContainer.astro"
 			<Badge text="Desarrollador Frontend" className="badge" active />
 			<h1>Jonathan Cervantes Alarcón</h1>
 			<p class="description">
-				Construyo aplicaciones web modernas, responsive y fáciles de usar con un enfoque en
-				código limpio y excelentes experiencias de usuario.
+				Construyo aplicaciones web optimizadas, responsive y estructuradas con un enfoque en
+				código limpio y excelente experiencia de usuario.
 			</p>
 			<div class="ctas">
 				<Button type="primary" href="/#projects">Ver mi trabajo</Button>
-				<Button href="/#contact">Contactame</Button>
+				<Button href={linkToWhatsapp}>Contactame</Button>
 			</div>
 		</div>
 	</MaxContainer>
