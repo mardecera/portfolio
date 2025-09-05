@@ -1,10 +1,11 @@
 ---
-import Badge from "@/components/Badge.astro"
-import Button from "@/components/Button.astro"
-import MaxContainer from "@/layouts/MaxContainer.astro"
+import Badge from "@/components/astro/Badge.astro"
+import Button from "@/components/astro/Button.astro"
+import MaxContainer from "@/components/astro/MaxContainer.astro"
 
 const phoneNumber = "+51977156464"
-const texto = "Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
+const texto =
+	"Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
 const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(texto)}`
 ---
 
