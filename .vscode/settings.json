@@ -5,5 +5,6 @@
 	"files.eol": "\n",
 	"[astro]": {
 		"editor.defaultFormatter": "astro-build.astro-vscode"
-	}
+	},
+	"editor.fontSize": 15
 }

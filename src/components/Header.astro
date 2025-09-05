@@ -2,25 +2,7 @@
 import BracketsIcon from "@/assets/brackets.svg"
 import MaxContainer from "@/layouts/MaxContainer.astro"
 import Link from "./Link.astro"
-
-const links = [
-	{
-		label: "Sobre mí",
-		href: "/#aboutme",
-	},
-	{
-		label: "Habilidades",
-		href: "/#skills",
-	},
-	{
-		label: "Proyectos",
-		href: "/#projects",
-	},
-	{
-		label: "Contacto",
-		href: "/#contact",
-	},
-]
+import { LINKS } from "@/constants/header"
 ---
 
 <header id="header">
@@ -31,7 +13,7 @@ const links = [
 				JCA
 			</Link>
 			<div class="spacer">
-				{links.map((link) => <Link href={link.href}>{link.label}</Link>)}
+				{LINKS.map((link) => <Link href={link.href}>{link.label}</Link>)}
 			</div>
 		</div>
 	</MaxContainer>
@@ -41,7 +23,7 @@ const links = [
 	#header {
 		position: sticky;
 		top: 0;
-		background-color: #0d06206b;
+		background-color: var(--background-color-50);
 		backdrop-filter: blur(30px);
 		color: white;
 		z-index: 10;

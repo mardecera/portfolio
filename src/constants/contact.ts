@@ -1,5 +1,5 @@
-export const contact = {
+export const CONTACT = {
 	email: "mardecera.personal@gmail.com",
-	phone: "(+51) 977 156 464",
+	phoneNumber: "977156464",
 	address: "Arequipa, Perú",
 }

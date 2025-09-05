@@ -26,11 +26,7 @@
 		"prettier-plugin-astro": "^0.14.1"
 	},
 	"pnpm": {
-		"ignoredBuiltDependencies": [
-			"@biomejs/biome"
-		],
-		"onlyBuiltDependencies": [
-			"lefthook"
-		]
+		"ignoredBuiltDependencies": ["@biomejs/biome", "esbuild"],
+		"onlyBuiltDependencies": ["lefthook", "sharp"]
 	}
 }

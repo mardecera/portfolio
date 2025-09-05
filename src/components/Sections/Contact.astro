@@ -1,11 +1,12 @@
 ---
 import TitleOfSection from "@/components/TitleOfSection.astro"
 import ContatcForm from "@/components/react/ContactForm"
-import { contact } from "@/constants/contact"
+import { CONTACT } from "@/constants/contact"
 import MaxContainer from "@/layouts/MaxContainer.astro"
 import EmailOutline from "@/ui/icons/EmailOutline.astro"
 import MarkOutline from "@/ui/icons/MarkOutline.astro"
 import PhoneOutline from "@/ui/icons/PhoneOutline.astro"
+import { phoneNumberFormatter } from "@/utils/formatters/phoneNumberFormatter"
 ---
 
 <div id="contact">
@@ -24,19 +25,19 @@ import PhoneOutline from "@/ui/icons/PhoneOutline.astro"
 							<li>
 								<span>
 									<EmailOutline size="default" />
-									<span>{contact.email}</span>
+									<span>{CONTACT.email}</span>
 								</span>
 							</li>
 							<li>
 								<span>
 									<PhoneOutline />
-									<span>{contact.phone}</span>
+									<span>{phoneNumberFormatter(CONTACT.phoneNumber, "51")}</span>
 								</span>
 							</li>
 							<li>
 								<span>
 									<MarkOutline />
-									<span>{contact.address}</span>
+									<span>{CONTACT.address}</span>
 								</span>
 							</li>
 						</ul>
