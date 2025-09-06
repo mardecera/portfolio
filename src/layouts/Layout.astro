@@ -10,14 +10,6 @@ import Header from "@/components/astro/Header.astro"
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
-		<title>Jonathan Cervantes Alarcon | Frontend Developer</title>
 		<meta name="title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
 		<meta
 			name="description"
@@ -41,7 +33,14 @@ import Header from "@/components/astro/Header.astro"
 			property="twitter:description"
 			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
 		/>
-		<meta property="twitter:image" content="https://mardecera.com/link-preview.png" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Jonathan Cervantes Alarcon | Frontend Developer</title>
 	</head>
 	<body>
 		<Header />
@@ -70,7 +69,6 @@ import Header from "@/components/astro/Header.astro"
 		min-height: 100dvh;
 		display: flex;
 		flex-direction: column;
-		/* align-items: stretch; */
 	}
 
 	main {
