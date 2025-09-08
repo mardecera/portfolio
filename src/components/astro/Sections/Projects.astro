@@ -4,7 +4,7 @@ import Button from "@/components/astro/Button.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import Tag from "@/components/astro/Tag.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import { projects } from "@/constants/projects"
+import { PROJECTS } from "@/constants/projects"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 ---
 
@@ -18,7 +18,7 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 			<div class="content">
 				<div class="list">
 					{
-						projects.map((project) => (
+						PROJECTS.map((project) => (
 							<div class="project">
 								<div class="thumnail">
 									<Picture
@@ -41,12 +41,14 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 										<Button
 											href={project?.pageUrl ?? ""}
 											disabled={project?.pageUrl === null}
+											type="secondary"
 										>
 											Ver Proyecto
 										</Button>
 										<Button
 											href={project?.codeUrl ?? ""}
 											disabled={project?.codeUrl === null}
+											type="secondary"
 											icon={GithubOutline}
 										/>
 									</div>
@@ -56,7 +58,11 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 					}
 				</div>
 				<div class="all">
-					<Button href="/projects">Ver todos los proyectos</Button>
+					<Button
+						type="secondary"
+						href="https://github.com/mardecera"
+						icon={GithubOutline}>Ver todos los proyectos</Button
+					>
 				</div>
 			</div>
 		</div>

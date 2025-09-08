@@ -2,10 +2,10 @@
 import Badge from "@/components/astro/Badge.astro"
 import Button from "@/components/astro/Button.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
+import WhatsApp from "@/ui/icons/WhatsApp.astro"
 
 const phoneNumber = "+51977156464"
-const texto =
-	"Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
+const texto = "Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
 const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(texto)}`
 ---
 
@@ -20,7 +20,7 @@ const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t
 			</p>
 			<div class="ctas">
 				<Button type="primary" href="/#projects">Ver mi trabajo</Button>
-				<Button href={linkToWhatsapp}>Contactame</Button>
+				<Button type="secondary" href={linkToWhatsapp} icon={WhatsApp}>Contactame</Button>
 			</div>
 		</div>
 	</MaxContainer>
@@ -31,7 +31,7 @@ const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t
 		margin: 0 auto;
 		padding: 2rem 0rem;
 		width: 100%;
-		color: white;
+		color: var(--white-color);
 
 		.hero-maxcontainer {
 			width: 100%;
