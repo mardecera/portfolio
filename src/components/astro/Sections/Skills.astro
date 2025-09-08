@@ -2,7 +2,7 @@
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import SkillCard from "@/components/astro/SkillCard.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import { skills } from "@/constants/skills"
+import { SKILLS } from "@/constants/skills"
 import Front from "@/ui/icons/Front.astro"
 import Responsive from "@/ui/icons/Responsive.astro"
 import Tools from "@/ui/icons/Tools.astro"
@@ -20,13 +20,8 @@ import Tools from "@/ui/icons/Tools.astro"
 			</div>
 			<div class="skills-grid">
 				{
-					skills.map(({ icon, title, description, tecnologies }) => (
-						<SkillCard
-							className="card"
-							title={title}
-							description={description}
-							tecnologies={tecnologies}
-						>
+					SKILLS.map(({ icon, title, tecnologies }) => (
+						<SkillCard className="card" title={title} tecnologies={tecnologies}>
 							{icon === "Front" && <Front />}
 							{icon === "Responsive" && <Responsive />}
 							{icon === "Tools" && <Tools />}

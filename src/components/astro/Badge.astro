@@ -28,7 +28,7 @@ const { text, type = "default", className, active } = Astro.props
 			display: flex;
 			width: 9px;
 			height: 9px;
-			background-color: var(--success-color);
+			background-color: var(--success-color-500);
 			border-radius: 15px;
 			aspect-ratio: 1 / 1;
 
@@ -52,15 +52,15 @@ const { text, type = "default", className, active } = Astro.props
 	}
 
 	.default {
-		background-color: white;
-		border: 1px solid #e5e7eb;
-		color: #151516;
+		background-color: var(--white-color);
+		border: 1px solid var(--gray-color-100);
+		color: var(--black-color);
 	}
 
 	.primary {
-		background-color: #151516;
-		border: 1px solid #151516;
-		color: #fdfdfd;
+		background-color: var(--primary-color-600);
+		border: 1px solid var(--primary-color-600);
+		color: var(--white-color);
 	}
 
 	@keyframes pulse {

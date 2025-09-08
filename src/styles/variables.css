@@ -1,9 +1,59 @@
 :root {
 	--background-color: #080316;
-	--primary-color: #6625ff;
-	--success-color: #28d336;
 	--success-color-transparent: rgba(45, 228, 60, 0.3);
 	--font-size: 16px;
 	--line-height: 1.5;
 	--background-color-50: rgba(13, 6, 32, 0.5);
+
+	/* Colors */
+	--white-color: #ffffff;
+	--black-color: #27272a;
+
+	/* Electric Violet */
+	--primary-color-50: #f3f2ff;
+	--primary-color-100: #eae7ff;
+	--primary-color-200: #d7d2ff;
+	--primary-color-300: #baaeff;
+	--primary-color-400: #9880ff;
+	--primary-color-500: #784dff;
+	--primary-color-600: #6625ff;
+	--primary-color-700: #5a16eb;
+	--primary-color-800: #4b12c5;
+	--primary-color-900: #3f11a1;
+	--primary-color-950: #24076e;
+
+	/* Malachite */
+	--success-color-50: #f0fdf0;
+	--success-color-100: #ddfbde;
+	--success-color-200: #bcf6bf;
+	--success-color-300: #88ed90;
+	--success-color-400: #4ddb58;
+	--success-color-500: #28d336;
+	--success-color-600: #18a124;
+	--success-color-700: #177e20;
+	--success-color-800: #17641e;
+	--success-color-900: #15521c;
+	--success-color-950: #062d0b;
+
+	/* Shark */
+
+	--gray-color-50: #fafafa;
+	--gray-color-100: #f5f5f5;
+	--gray-color-200: #e5e7eb;
+	--gray-color-300: #d1d5db;
+	--gray-color-400: #9ca3af;
+	--gray-color-500: #6b7280;
+	--gray-color-600: #4b5563;
+	--gray-color-700: #374151;
+	--gray-color-800: #1e293b;
+	--gray-color-900: #0f172a;
+
+	/* Color opacity */
+
+	--primary-opacity-50: rgba(102, 37, 255, 0.5);
+	--primary-opacity-70: rgba(102, 37, 255, 0.7);
+	--gray-opacity-50: rgba(75, 85, 99, 0.5);
+	--gray-opacity-70: rgba(75, 85, 99, 0.7);
+	--success-opacity-50: rgba(45, 228, 60, 0.5);
+	--success-opacity-70: rgba(45, 228, 60, 0.7);
 }
