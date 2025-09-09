@@ -4,6 +4,7 @@ import Button from "@/components/astro/Button.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
+import { CONTACT } from "@/constants/contact"
 ---
 
 <footer id="footer">
@@ -20,13 +21,13 @@ import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
 			</div>
 			<div class="networks">
 				<Button
-					href="https://github.com/mardecera"
+					href={CONTACT.social.github}
 					icon={GithubOutline}
 					variant="text"
 					type="secondary"
 				/>
 				<Button
-					href="https://www.linkedin.com/in/mardecera/"
+					href={CONTACT.social.linkedin}
 					icon={LinkedinOutline}
 					variant="text"
 					type="secondary"
@@ -38,8 +39,8 @@ import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
 
 <style>
 	#footer {
-		border-top: 1px solid #e4e4e7;
-		background-color: white;
+		border-top: 1px solid var(--gray-color-200);
+		background-color: var(--white-color);
 
 		.footer-container {
 			display: flex;
@@ -72,7 +73,7 @@ import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
 		}
 
 		.copy {
-			color: #71717a;
+			color: var(--gray-color-500);
 			font-size: 0.875rem;
 			text-align: center;
 
