@@ -11,10 +11,12 @@ const { title, tecnologies, className } = Astro.props
 ---
 
 <div class={`skill-card ${className}`}>
-	<span class="icon">
-		<slot />
-	</span>
-	<h3>{title}</h3>
+	<div class="skill-card__header">
+		<span class="icon">
+			<slot />
+		</span>
+		<h3>{title}</h3>
+	</div>
 	<ul class="tecnologies">
 		{tecnologies.map((tecnology) => <Tag>{tecnology}</Tag>)}
 	</ul>
@@ -34,10 +36,16 @@ const { title, tecnologies, className } = Astro.props
 			outline: 5px solid var(--gray-opacity-70);
 		}
 
+		& .skill-card__header {
+			display: flex;
+			gap: 1rem;
+			align-items: center;
+		}
+
 		& .icon {
 			background-color: var(--black-color);
-			width: 3rem;
-			height: 3rem;
+			width: 2.5rem;
+			height: 2.5rem;
 			aspect-ratio: 1 / 1;
 			border-radius: 3rem;
 			display: flex;

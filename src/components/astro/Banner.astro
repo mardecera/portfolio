@@ -2,6 +2,7 @@
 import Button from "@/components/astro/Button.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import WhatsApp from "@/ui/icons/WhatsApp.astro"
+import { CONTACT } from "@/constants/contact"
 
 interface Props {
 	title: string
@@ -9,10 +10,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props
-
-const phoneNumber = "+51977156464"
-const texto = "Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀"
-const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(texto)}`
+const { whatsapp, phones } = CONTACT
+const linkToWhatsapp = `${whatsapp.baseLink}${phones.pe.phoneNumber}?text=${encodeURIComponent(whatsapp.pe.message)}`
 ---
 
 <div id="banner">
@@ -31,8 +30,6 @@ const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t
 
 <style>
 	#banner {
-		background-color: #18181b;
-
 		& .container {
 			display: flex;
 			flex-wrap: wrap;
@@ -40,7 +37,7 @@ const linkToWhatsapp = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(t
 			justify-content: space-between;
 			align-items: center;
 			padding-block: 3rem;
-			color: white;
+			color: var(--white-color);
 
 			& .info {
 				& h1 {
