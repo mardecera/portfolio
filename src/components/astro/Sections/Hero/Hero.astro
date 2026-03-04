@@ -1,0 +1,34 @@
+---
+import Badge from "@/components/astro/Badge.astro"
+import Button from "@/components/astro/Button"
+import MaxContainer from "@/components/astro/MaxContainer.astro"
+import WhatsApp from "@/ui/icons/WhatsApp.astro"
+import { getLinkToWhatsapp } from "./Hero.helper"
+import styles from "./Hero.module.css"
+
+const linkToWhatsapp = getLinkToWhatsapp()
+---
+
+<div id="hero" class={styles.hero}>
+	<MaxContainer className={styles.heroMaxcontainer}>
+		<div class={styles.heroContainer}>
+			<Badge
+				text="Desarrollador Frontend"
+				className={styles.badge}
+				active
+			/>
+			<h1 class="font-bold text-[32px]">Jonathan Cervantes Alarcón</h1>
+			<p class={styles.description}>
+				Construyo aplicaciones web optimizadas, responsive y
+				estructuradas con un enfoque en código limpio y excelente
+				experiencia de usuario.
+			</p>
+			<div class={styles.ctas}>
+				<Button type="primary" href="/#projects">Ver mi trabajo</Button>
+				<Button type="secondary" href={linkToWhatsapp} icon={WhatsApp}
+					>Contactame</Button
+				>
+			</div>
+		</div>
+	</MaxContainer>
+</div>
