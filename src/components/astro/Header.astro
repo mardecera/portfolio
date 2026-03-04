@@ -8,12 +8,20 @@ import Link from "./Link.astro"
 <header id="header">
 	<MaxContainer>
 		<div class="header-container">
-			<Link href="/" className="logo">
-				<BracketsIcon />
-				JCA
+			<Link href="/" className="logo px-0! h-auto!">
+				<BracketsIcon class="w-6 h-6" />
+				<span class="text-[16px] font-bold">JCA</span>
 			</Link>
 			<div class="spacer">
-				{LINKS.map((link) => <Link href={link.href}>{link.label}</Link>)}
+				{
+					LINKS.map((link) => (
+						<Link className="px-0! h-auto!" href={link.href}>
+							<span class="text-sm font-medium">
+								{link.label}
+							</span>
+						</Link>
+					))
+				}
 			</div>
 		</div>
 	</MaxContainer>
@@ -43,7 +51,7 @@ import Link from "./Link.astro"
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
-				font-weight: 700;
+				/* font-weight: 700; */
 			}
 
 			& .spacer {
@@ -52,7 +60,7 @@ import Link from "./Link.astro"
 				@media only screen and (min-width: 616px) {
 					display: flex;
 					gap: 2rem;
-					font-weight: 500;
+					/* font-weight: 500; */
 					font-size: 14px;
 				}
 			}

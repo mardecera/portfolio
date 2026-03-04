@@ -1,8 +1,9 @@
 ---
-import Button from "@/components/astro/Button.astro"
+import Button from "@/components/astro/Button"
+// import Button from "@/components/astro/Button.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
-import WhatsApp from "@/ui/icons/WhatsApp.astro"
 import { CONTACT } from "@/constants/contact"
+import WhatsApp from "@/ui/icons/WhatsApp.astro"
 
 interface Props {
 	title: string
@@ -22,7 +23,9 @@ const linkToWhatsapp = `${whatsapp.baseLink}${phones.pe.phoneNumber}?text=${enco
 				<p>{description}</p>
 			</div>
 			<div class="cta">
-				<Button type="secondary" href={linkToWhatsapp} icon={WhatsApp}>Contactame</Button>
+				<Button type="secondary" href={linkToWhatsapp} icon={WhatsApp}
+					>Contactame</Button
+				>
 			</div>
 		</div>
 	</MaxContainer>
