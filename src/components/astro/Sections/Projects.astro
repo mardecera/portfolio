@@ -1,11 +1,11 @@
 ---
 import { Picture } from "astro:assets"
-import Button from "@/components/astro/Button.astro"
+import Button from "@/components/astro/Button"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import Tag from "@/components/astro/Tag.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import { PROJECTS } from "@/constants/projects"
 import { CONTACT } from "@/constants/contact"
+import { PROJECTS } from "@/constants/projects"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 ---
 
@@ -31,11 +31,15 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 								<div class="body">
 									<div class="info">
 										<h3>{project.title}</h3>
-										<p class="description">{project.description}</p>
+										<p class="description">
+											{project.description}
+										</p>
 										<span class="tags">
-											{project?.technologies?.map((tag) => (
-												<Tag>{tag}</Tag>
-											))}
+											{project?.technologies?.map(
+												(tag) => (
+													<Tag>{tag}</Tag>
+												)
+											)}
 										</span>
 									</div>
 									<div class="links">
@@ -59,8 +63,10 @@ import GithubOutline from "@/ui/icons/GithubOutline.astro"
 					}
 				</div>
 				<div class="all">
-					<Button type="secondary" href={CONTACT.social.github} icon={GithubOutline}
-						>Ver todos los proyectos</Button
+					<Button
+						type="secondary"
+						href={CONTACT.social.github}
+						icon={GithubOutline}>Ver todos los proyectos</Button
 					>
 				</div>
 			</div>

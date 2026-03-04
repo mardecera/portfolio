@@ -1,0 +1,31 @@
+---
+import { cn } from "@/utils/common.utils"
+import { getAttributes } from "./Button.helper"
+import styles from "./Button.module.css"
+import type { ButtonProps } from "./Button.types"
+
+const props: ButtonProps = Astro.props
+
+const { type = "primary", icon: Icon, download, disabled, ...rest } = props
+const { href, className, htmlType = "button" } = rest
+
+const hasSlot = Astro.slots.has("default")
+const Component = href ? "a" : "button"
+const attributes = getAttributes(href ?? "")
+---
+
+<Component
+	class={cn(
+		styles.button,
+		styles[type],
+		!hasSlot && styles.onlyIcon,
+		className
+	)}
+	disabled={disabled}
+	download={download}
+	type={htmlType}
+	{...attributes}
+>
+	{hasSlot ? <slot /> : null}
+	{Icon ? <Icon /> : null}
+</Component>

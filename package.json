@@ -12,12 +12,16 @@
 	},
 	"dependencies": {
 		"@astrojs/react": "^4.2.3",
+		"@tailwindcss/vite": "^4.2.1",
 		"@types/react": "^19.1.1",
 		"@types/react-dom": "^19.1.2",
 		"astro": "^5.5.4",
+		"clsx": "^2.1.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
-		"sharp": "^0.34.2"
+		"sharp": "^0.34.2",
+		"tailwind-merge": "^3.5.0",
+		"tailwindcss": "^4.2.1"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
@@ -27,6 +31,9 @@
 	},
 	"pnpm": {
 		"ignoredBuiltDependencies": ["@biomejs/biome", "esbuild"],
-		"onlyBuiltDependencies": ["lefthook", "sharp"]
+		"onlyBuiltDependencies": ["lefthook", "sharp"],
+		"overrides": {
+			"vite": "6.2.6"
+		}
 	}
 }

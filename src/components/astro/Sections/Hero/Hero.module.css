@@ -1,0 +1,40 @@
+.hero {
+	margin: 0 auto;
+	padding: 2rem 0rem;
+	width: 100%;
+	color: var(--white-color);
+}
+
+.heroMaxcontainer {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+}
+
+.heroContainer {
+	max-width: 42rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	padding-top: 10%;
+}
+
+.badge {
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+.description {
+	text-align: center;
+}
+
+.ctas {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 1rem;
+}
