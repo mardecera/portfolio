@@ -1,37 +1,75 @@
 ---
-import "../styles/global.css"
+import { getAbsoluteLocaleUrl } from "astro:i18n"
+
 import Footer from "@/components/astro/Footer.astro"
 import Header from "@/components/astro/Header.astro"
+import { useTranslations } from "@/i18n/utils"
+import { SUPPORTED_LOCALES } from "@/utils/locale.utils"
+import { getLocaleFromPath, stripLocaleFromPath } from "@/utils/locale.utils"
+import "../styles/global.css"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const pagePath = stripLocaleFromPath(Astro.url.pathname)
+const canonicalUrl = pagePath
+	? getAbsoluteLocaleUrl(currentLocale, pagePath)
+	: getAbsoluteLocaleUrl(currentLocale)
+const alternateLinks = SUPPORTED_LOCALES.map((locale) => ({
+	locale,
+	href: pagePath
+		? getAbsoluteLocaleUrl(locale, pagePath)
+		: getAbsoluteLocaleUrl(locale),
+}))
+const xDefaultHref = pagePath
+	? getAbsoluteLocaleUrl("es", pagePath)
+	: getAbsoluteLocaleUrl("es")
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
-		<meta
-			name="description"
-			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
-		/>
+		<title>{t("layout.title")}</title>
+		<meta name="title" content={t("layout.title")} />
+		<meta name="description" content={t("layout.description")} />
+		<link rel="canonical" href={canonicalUrl} />
+		{
+			alternateLinks.map(({ locale, href }) => (
+				<link rel="alternate" hreflang={locale} href={href} />
+			))
+		}
+		<link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://mardecera.com/" />
-		<meta property="og:title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
+		<meta property="og:locale" content={currentLocale} />
+		{
+			alternateLinks
+				.filter(({ locale }) => locale !== currentLocale)
+				.map(({ locale }) => (
+					<meta property="og:locale:alternate" content={locale} />
+				))
+		}
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:title" content={t("layout.title")} />
+		<meta property="og:description" content={t("layout.description")} />
 		<meta
-			property="og:description"
-			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
+			property="og:image"
+			content="https://mardecera.com/link-preview.jpg"
 		/>
-		<meta property="og:image" content="https://mardecera.com/link-preview.jpg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:type" content="image/jpeg" />
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://mardecera.com/" />
-		<meta property="twitter:title" content="Jonathan Cervantes Alarcon | Frontend Developer" />
+		<meta property="twitter:url" content={canonicalUrl} />
+		<meta property="twitter:title" content={t("layout.title")} />
 		<meta
 			property="twitter:description"
-			content="Portafolio web de un desarrollador frontend, mostrando proyectos y habilidades en tecnologías modernas. ¿Tienes un proyecto que necesita un toque creativo? ¡Me encantaría escucharlo!"
+			content={t("layout.description")}
+		/>
+		<meta
+			property="twitter:image"
+			content="https://mardecera.com/link-preview.jpg"
 		/>
 		<meta name="generator" content={Astro.generator} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,7 +78,6 @@ import Header from "@/components/astro/Header.astro"
 			href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Jonathan Cervantes Alarcon | Frontend Developer</title>
 	</head>
 	<body>
 		<Header />
@@ -65,7 +102,8 @@ import Header from "@/components/astro/Header.astro"
 		margin: 0;
 		width: 100%;
 		font-family:
-			"Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+			"Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+			"Nimbus Sans", Arial, sans-serif;
 		min-height: 100dvh;
 		display: flex;
 		flex-direction: column;

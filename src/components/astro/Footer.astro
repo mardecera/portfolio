@@ -3,22 +3,35 @@ import BracketsIcon from "@/assets/brackets.svg"
 import Button from "@/components/astro/Button"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import { CONTACT } from "@/constants/contact"
+import { useTranslations } from "@/i18n/utils"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+import LocaleSwitcher from "../react/LocaleSwitcher/LocaleSwitcher"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
 ---
 
 <footer id="footer">
 	<MaxContainer>
-		<div class="footer-container">
+		<div class="footer-container flex-col sm:flex-row">
 			<div class="me">
-				<div class="logo">
+				<div class="logo mx-auto! sm:mx-0 w-fit sm:w-auto">
 					<BracketsIcon />
-					Jonathan Cervantes Alarc&oacute;n
+					<span>Jonathan Cervantes Alarc&oacute;n</span>
 				</div>
-				<div class="copy">
-					© 2025 Jonathan Cervantes Alarc&oacute;n. Todos los
-					derechos reservados
+				<div class="copy text-center">
+					© 2025 Jonathan Cervantes Alarc&oacute;n. {
+						t("footer.copy")
+					}
 				</div>
+				<LocaleSwitcher
+					client:load
+					currentLocale={currentLocale}
+					currentPath={Astro.url.pathname}
+					className="mt-4 mx-auto! sm:mx-0!"
+				/>
 			</div>
 			<div class="networks">
 				<Button
@@ -26,12 +39,14 @@ import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
 					icon={GithubOutline}
 					variant="text"
 					type="secondary"
+					className="p-0! w-11! h-11! aspect-square!"
 				/>
 				<Button
 					href={CONTACT.social.linkedin}
 					icon={LinkedinOutline}
 					variant="text"
 					type="secondary"
+					className="p-0! w-11! h-11! aspect-square!"
 				/>
 			</div>
 		</div>
@@ -51,14 +66,14 @@ import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
 			gap: 1rem;
 			justify-content: center;
 
-			@media only screen and (min-width: 640px) {
+			/* @media only screen and (min-width: 640px) {
 				gap: 3rem;
 				justify-content: space-between;
 			}
 
 			@media only screen and (min-width: 1080px) {
 				padding: 4rem 0rem;
-			}
+			} */
 		}
 
 		.logo {
