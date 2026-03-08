@@ -15,7 +15,7 @@ const t = useTranslations(currentLocale)
 
 <footer id="footer">
 	<MaxContainer>
-		<div class="footer-container flex-col sm:flex-row">
+		<div class="footer-container flex-col sm:flex-row sm:justify-between!">
 			<div class="me">
 				<div class="logo mx-auto! sm:mx-0 w-fit sm:w-auto">
 					<BracketsIcon />
@@ -65,15 +65,6 @@ const t = useTranslations(currentLocale)
 			flex-wrap: wrap;
 			gap: 1rem;
 			justify-content: center;
-
-			/* @media only screen and (min-width: 640px) {
-				gap: 3rem;
-				justify-content: space-between;
-			}
-
-			@media only screen and (min-width: 1080px) {
-				padding: 4rem 0rem;
-			} */
 		}
 
 		.logo {
