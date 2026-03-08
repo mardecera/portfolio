@@ -3,23 +3,24 @@ import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
 import ContatcForm from "@/components/react/ContactForm"
 import { CONTACT } from "@/constants/contact"
+import { useTranslations } from "@/i18n/utils"
 import EmailOutline from "@/ui/icons/EmailOutline.astro"
 import MarkOutline from "@/ui/icons/MarkOutline.astro"
 import PhoneOutline from "@/ui/icons/PhoneOutline.astro"
 import { phoneNumberFormatter } from "@/utils/formatters/phoneNumberFormatter"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
 ---
 
-<div id="contact">
+<div id="contact" class="full-bleed">
 	<MaxContainer>
 		<div class="container">
-			<TitleOfSection>Contacto</TitleOfSection>
+			<TitleOfSection>{t("contact.section")}</TitleOfSection>
 			<div class="content">
 				<div class="info">
-					<p>
-						Estoy disponible para trabajar como freelance y para posiciones de tiempo
-						completo. Si tienes un proyecto que necesita un toque creativo, me
-						encantaría escuchar sobre él.
-					</p>
+					<p class="font-medium">{t("contact.description")}</p>
 					<div class="contacts">
 						<ul>
 							<li>
@@ -31,7 +32,14 @@ import { phoneNumberFormatter } from "@/utils/formatters/phoneNumberFormatter"
 							<li>
 								<span>
 									<PhoneOutline />
-									<span>{phoneNumberFormatter(CONTACT.phoneNumber, "51")}</span>
+									<span
+										>{
+											phoneNumberFormatter(
+												CONTACT.phoneNumber,
+												"51"
+											)
+										}</span
+									>
 								</span>
 							</li>
 							<li>
@@ -68,10 +76,6 @@ import { phoneNumberFormatter } from "@/utils/formatters/phoneNumberFormatter"
 					display: flex;
 					gap: 1rem;
 					flex-direction: column;
-
-					& > p {
-						color: var(--gray-color-500);
-					}
 
 					& .contacts {
 						& ul {

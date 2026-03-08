@@ -2,26 +2,33 @@
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import SkillCard from "@/components/astro/SkillCard.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import { SKILLS } from "@/constants/skills"
+import { getSkills } from "@/constants/skills"
+import { useTranslations } from "@/i18n/utils"
 import Front from "@/ui/icons/Front.astro"
 import Responsive from "@/ui/icons/Responsive.astro"
 import Tools from "@/ui/icons/Tools.astro"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const SKILLS = getSkills(currentLocale)
 ---
 
 <div id="skills">
 	<MaxContainer>
 		<div class="skills-container">
 			<div class="header">
-				<TitleOfSection>Habilidades</TitleOfSection>
-				<h2>
-					Estas son las tecnologías y herramientas con las que trabajo para dar vida a mis
-					ideas.
-				</h2>
+				<TitleOfSection>{t("skills.section")}</TitleOfSection>
+				<h2>{t("skills.title")}</h2>
 			</div>
 			<div class="skills-grid">
 				{
 					SKILLS.map(({ icon, title, tecnologies }) => (
-						<SkillCard className="card" title={title} tecnologies={tecnologies}>
+						<SkillCard
+							className="card"
+							title={title}
+							tecnologies={tecnologies}
+						>
 							{icon === "Front" && <Front />}
 							{icon === "Responsive" && <Responsive />}
 							{icon === "Tools" && <Tools />}

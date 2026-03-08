@@ -8,6 +8,9 @@
 .heroMaxcontainer {
 	width: 100%;
 	aspect-ratio: 16 / 9;
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
 }
 
 .heroContainer {
@@ -16,7 +19,7 @@
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
-	padding-top: 10%;
+	/* padding-top: 10%; */
 }
 
 .badge {

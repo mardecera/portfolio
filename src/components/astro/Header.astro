@@ -1,21 +1,30 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n"
 import BracketsIcon from "@/assets/brackets.svg"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
-import { LINKS } from "@/constants/header"
+import { getLinks } from "@/constants/header"
+import { getLocaleFromPath } from "@/utils/locale.utils"
 import Link from "./Link.astro"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const homeHref = getRelativeLocaleUrl(currentLocale)
+const LINKS = getLinks(currentLocale)
 ---
 
-<header id="header">
+<header id="header" class="sticky sm:fixed">
 	<MaxContainer>
 		<div class="header-container">
-			<Link href="/" className="logo px-0! h-auto!">
+			<Link href={homeHref} className="logo px-0! h-auto!">
 				<BracketsIcon class="w-6 h-6" />
 				<span class="text-[16px] font-bold">JCA</span>
 			</Link>
 			<div class="spacer">
 				{
 					LINKS.map((link) => (
-						<Link className="px-0! h-auto!" href={link.href}>
+						<Link
+							className="px-0! h-auto!"
+							href={`${homeHref}${link.href}`}
+						>
 							<span class="text-sm font-medium">
 								{link.label}
 							</span>
@@ -29,7 +38,8 @@ import Link from "./Link.astro"
 
 <style>
 	#header {
-		position: sticky;
+		left: 0;
+		right: 0;
 		top: 0;
 		background-color: var(--black-opacity-50);
 		backdrop-filter: blur(30px);
@@ -37,7 +47,6 @@ import Link from "./Link.astro"
 		z-index: 10;
 
 		.header-container {
-			position: sticky;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -51,7 +60,6 @@ import Link from "./Link.astro"
 				display: flex;
 				align-items: center;
 				gap: 0.5rem;
-				/* font-weight: 700; */
 			}
 
 			& .spacer {
@@ -60,7 +68,6 @@ import Link from "./Link.astro"
 				@media only screen and (min-width: 616px) {
 					display: flex;
 					gap: 2rem;
-					/* font-weight: 500; */
 					font-size: 14px;
 				}
 			}

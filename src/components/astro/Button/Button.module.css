@@ -9,7 +9,7 @@ button {
 	font-weight: 600;
 	cursor: pointer;
 	display: flex;
-	gap: 0.5rem;
+	gap: 1rem;
 	align-items: center;
 	justify-content: center;
 	color: #18181b;
