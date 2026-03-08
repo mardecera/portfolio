@@ -2,40 +2,34 @@
 import Button from "@/components/astro/Button"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
+import { useTranslations } from "@/i18n/utils"
 import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
 ---
 
-<div id="aboutme">
+<div id="aboutme" class="full-bleed">
 	<MaxContainer>
 		<div class="aboutme-container">
 			<div class="info">
-				<TitleOfSection>Sobre mí</TitleOfSection>
-				<h2>Desarrollador Web Apasionado</h2>
-				<div class="description">
-					<p>
-						Con 1 año de experiencia en crear aplicaciones web,
-						responsive y rápidas.
-					</p>
-					<p>
-						Me motiva el solucionar problemas reales mediante la
-						programacion y el desarrollo, para que el usuario pueda
-						usarlos en apps, de la manera mas simple y efectiva.
-					</p>
-					<p>
-						Y ya sea desde crear un proyecto desde cero o integrarme
-						a uno ya avanzado, estoy listo para seguir avanzando
-						hasta culminarlo.
-					</p>
+				<TitleOfSection>{t("aboutMe.section")}</TitleOfSection>
+				<h2 class="font-bold">{t("aboutMe.title")}</h2>
+				<div class="leading-[150%]">
+					<p>{t("aboutMe.descriptionOne")}</p>
+					<p>{t("aboutMe.descriptionTwo")}</p>
+					<p>{t("aboutMe.descriptionThree")}</p>
 				</div>
 				<div class="cta">
 					<Button
 						type="secondary"
 						disabled
 						download="jonathan-cervantes-cv.pdf"
-						href="/cv.pdf"
+						href="/jonathan-cervantes-cv.pdf"
 						icon={DownloadOutline}
 					>
-						Descargar CV
+						{t("aboutMe.download")}
 					</Button>
 				</div>
 			</div>
@@ -90,11 +84,11 @@ import DownloadOutline from "@/ui/icons/DownloadOutline.astro"
 			flex-direction: column;
 			gap: 1rem;
 
-			.description {
+			/* .description {
 				display: flex;
 				flex-direction: column;
 				gap: 1rem;
-			}
+			} */
 		}
 	}
 </style>

@@ -1,32 +1,39 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n"
 import Badge from "@/components/astro/Badge.astro"
 import Button from "@/components/astro/Button"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
+import { useTranslations } from "@/i18n/utils"
 import WhatsApp from "@/ui/icons/WhatsApp.astro"
+import { getLocaleFromPath } from "@/utils/locale.utils"
 import { getLinkToWhatsapp } from "./Hero.helper"
 import styles from "./Hero.module.css"
 
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const linkToWhatsapp = getLinkToWhatsapp()
+const t = useTranslations(currentLocale)
+const projectsHref = `${getRelativeLocaleUrl(currentLocale)}#projects`
 ---
 
 <div id="hero" class={styles.hero}>
 	<MaxContainer className={styles.heroMaxcontainer}>
 		<div class={styles.heroContainer}>
-			<Badge
-				text="Desarrollador Frontend"
-				className={styles.badge}
-				active
-			/>
+			<Badge text={t("hero.badge")} className={styles.badge} active />
 			<h1 class="font-bold text-[32px]">Jonathan Cervantes Alarcón</h1>
-			<p class={styles.description}>
-				Construyo aplicaciones web optimizadas, responsive y
-				estructuradas con un enfoque en código limpio y excelente
-				experiencia de usuario.
-			</p>
+			<p class={styles.description}>{t("hero.description")}</p>
 			<div class={styles.ctas}>
-				<Button type="primary" href="/#projects">Ver mi trabajo</Button>
-				<Button type="secondary" href={linkToWhatsapp} icon={WhatsApp}
-					>Contactame</Button
+				<Button
+					type="primary"
+					href={projectsHref}
+					className="w-full! sm:w-auto!"
+				>
+					{t("hero.projects")}
+				</Button>
+				<Button
+					type="secondary"
+					href={linkToWhatsapp}
+					icon={WhatsApp}
+					className="w-full! sm:w-auto!">{t("hero.contact")}</Button
 				>
 			</div>
 		</div>

@@ -15,7 +15,7 @@ const { title, tecnologies, className } = Astro.props
 		<span class="icon">
 			<slot />
 		</span>
-		<h3>{title}</h3>
+		<h3 class="font-bold">{title}</h3>
 	</div>
 	<ul class="tecnologies">
 		{tecnologies.map((tecnology) => <Tag>{tecnology}</Tag>)}
