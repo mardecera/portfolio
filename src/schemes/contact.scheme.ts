@@ -1,5 +1,5 @@
 import type { TFunction } from "@/types/i18n.types"
-import * as z from "zod/v4"
+import { z } from "zod"
 
 export const createContactSchema = (t: TFunction) =>
 	z.object({
@@ -7,7 +7,7 @@ export const createContactSchema = (t: TFunction) =>
 		email: z
 			.string()
 			.min(1, t("errors.forms.emailRequired"))
-			.pipe(z.email(t("errors.forms.emailInvalid"))),
+			.email(t("errors.forms.emailInvalid")),
 		message: z.string().min(1, t("errors.forms.messageRequired")),
 	})
 

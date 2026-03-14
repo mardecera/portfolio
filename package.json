@@ -13,7 +13,9 @@
 		"clean:node": "rm -rf node_modules",
 		"clean:dist": "rm -rf dist",
 		"clean:astro": "rm -rf .astro",
-		"clean": "pnpm run clean:node && pnpm run clean:dist && pnpm run clean:astro",
+		"clean:cache": "rm -rf .cache",
+		"clean:netlify": "rm -rf .netlify",
+		"clean": "pnpm run clean:node && pnpm run clean:dist && pnpm run clean:astro && pnpm run clean:cache && pnpm run clean:netlify",
 		"ri": "pnpm run clean && pnpm install"
 	},
 	"dependencies": {
@@ -24,7 +26,7 @@
 		"@tanstack/react-query": "^5.90.21",
 		"@types/react": "^19.1.1",
 		"@types/react-dom": "^19.1.2",
-		"astro": "^5.5.4",
+		"astro": "^6.0.4",
 		"axios": "^1.13.6",
 		"clsx": "^2.1.1",
 		"react": "^19.1.0",
@@ -37,7 +39,7 @@
 		"zod": "^4.3.6"
 	},
 	"devDependencies": {
-		"@astrojs/netlify": "^6.0.0",
+		"@astrojs/netlify": "^7.0.2",
 		"@biomejs/biome": "1.9.4",
 		"@react-email/preview-server": "5.2.9",
 		"lefthook": "^1.11.3",

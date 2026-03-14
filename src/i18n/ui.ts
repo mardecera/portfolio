@@ -1,6 +1,4 @@
 import { type AppLocale, DEFAULT_LOCALE } from "@/utils/locale.utils"
-import { error } from "node_modules/astro/dist/core/logger/core"
-
 export const ui = {
 	es: {
 		aboutMe: {

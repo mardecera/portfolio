@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n"
 import BracketsIcon from "@/assets/brackets.svg"
 import Button from "@/components/astro/Button"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
@@ -6,10 +7,19 @@ import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import LinkedinOutline from "@/ui/icons/LinkedinOutline.astro"
-import { getLocaleFromPath } from "@/utils/locale.utils"
+import { getLocaleFromPath, stripLocaleFromPath } from "@/utils/locale.utils"
 import LocaleSwitcher from "../react/LocaleSwitcher/LocaleSwitcher"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const relativePath = stripLocaleFromPath(Astro.url.pathname)
+const localeHrefs = {
+	es: relativePath
+		? getRelativeLocaleUrl("es", relativePath)
+		: getRelativeLocaleUrl("es"),
+	en: relativePath
+		? getRelativeLocaleUrl("en", relativePath)
+		: getRelativeLocaleUrl("en"),
+}
 const t = useTranslations(currentLocale)
 ---
 
@@ -29,7 +39,7 @@ const t = useTranslations(currentLocale)
 				<LocaleSwitcher
 					client:load
 					currentLocale={currentLocale}
-					currentPath={Astro.url.pathname}
+					localeHrefs={localeHrefs}
 					className="mt-4 mx-auto! sm:mx-0!"
 				/>
 			</div>

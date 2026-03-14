@@ -52,7 +52,10 @@ const t = useTranslations(currentLocale)
 					</div>
 				</div>
 				<div class="flex-1 -mt-5">
-					<ContactFormWithProvider client:load locale={currentLocale} />
+					<ContactFormWithProvider
+						client:load
+						locale={currentLocale}
+					/>
 				</div>
 			</div>
 		</div>
