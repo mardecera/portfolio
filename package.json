@@ -7,27 +7,42 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome": "biome check ./src",
-		"biome:fix": "biome check --write ./src"
+		"check": "biome check ./src",
+		"format": "biome check --write ./src",
+		"email": "email dev",
+		"clean:node": "rm -rf node_modules",
+		"clean:dist": "rm -rf dist",
+		"clean:astro": "rm -rf .astro",
+		"clean": "pnpm run clean:node && pnpm run clean:dist && pnpm run clean:astro",
+		"ri": "pnpm run clean && pnpm install"
 	},
 	"dependencies": {
 		"@astrojs/react": "^4.2.3",
+		"@hookform/resolvers": "^5.2.2",
+		"@react-email/components": "^1.0.9",
 		"@tailwindcss/vite": "^4.2.1",
+		"@tanstack/react-query": "^5.90.21",
 		"@types/react": "^19.1.1",
 		"@types/react-dom": "^19.1.2",
 		"astro": "^5.5.4",
+		"axios": "^1.13.6",
 		"clsx": "^2.1.1",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
+		"react-hook-form": "^7.71.2",
+		"resend": "^6.9.3",
 		"sharp": "^0.34.2",
 		"tailwind-merge": "^3.5.0",
-		"tailwindcss": "^4.2.1"
+		"tailwindcss": "^4.2.1",
+		"zod": "^4.3.6"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
+		"@react-email/preview-server": "5.2.9",
 		"lefthook": "^1.11.3",
 		"prettier": "^3.5.3",
 		"prettier-plugin-astro": "^0.14.1",
+		"react-email": "^5.2.9",
 		"vite-plugin-svgr": "^4.5.0"
 	},
 	"pnpm": {

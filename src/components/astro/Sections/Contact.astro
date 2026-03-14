@@ -1,7 +1,7 @@
 ---
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import ContatcForm from "@/components/react/ContactForm"
+import ContactFormWithProvider from "@/components/react/ContactForm/ContactFormWithProvider"
 import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
 import EmailOutline from "@/ui/icons/EmailOutline.astro"
@@ -19,7 +19,7 @@ const t = useTranslations(currentLocale)
 		<div class="container">
 			<TitleOfSection>{t("contact.section")}</TitleOfSection>
 			<div class="content">
-				<div class="info">
+				<div class="info flex-1">
 					<p class="font-medium">{t("contact.description")}</p>
 					<div class="contacts">
 						<ul>
@@ -50,6 +50,9 @@ const t = useTranslations(currentLocale)
 							</li>
 						</ul>
 					</div>
+				</div>
+				<div class="flex-1 -mt-5">
+					<ContactFormWithProvider client:load locale={currentLocale} />
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 import { type AppLocale, DEFAULT_LOCALE } from "@/utils/locale.utils"
+import { error } from "node_modules/astro/dist/core/logger/core"
 
 export const ui = {
 	es: {
@@ -23,6 +24,21 @@ export const ui = {
 			section: "Contacto",
 			description:
 				"Estoy disponible para trabajar como freelance y para posiciones de tiempo completo. Si tienes un proyecto que necesita un toque creativo, me encantaria escuchar sobre el.",
+			inputNamePlaceholder: "Jhon Doe",
+			inputNameLabel: "Nombre",
+			inputEmailPlaceholder: "email@ejemplo.com",
+			inputEmailLabel: "Correo",
+			inputMessagePlaceholder: "Escribe tu mensaje aqui...",
+			inputMessageLabel: "Mensaje",
+			buttonSubmit: "Enviar mensaje",
+			sendSuccess: "Mensaje a sido enviado con exito",
+			status: {
+				idle: "Enviar mensaje",
+				pending: "Enviando...",
+				success: "Tu mensaje a sido enviado con exito",
+				error:
+					"Ocurrio un error al enviar el mensaje. Por favor intenta de nuevo mas tarde.",
+			},
 		},
 		layout: {
 			title: "Jonathan Cervantes Alarcon | Desarrollador Frontend",
@@ -71,6 +87,14 @@ export const ui = {
 				"Es posible que la URL este mal escrita o que la pagina haya cambiado de lugar.",
 			cta: "Volver al inicio",
 		},
+		errors: {
+			forms: {
+				emailInvalid: "Ingresa un correo electrónico válido",
+				emailRequired: "Ingresa tu correo electrónico",
+				nameRequired: "Ingresa tu nombre",
+				messageRequired: "Ingresa un mensaje",
+			},
+		},
 	},
 	en: {
 		aboutMe: {
@@ -94,6 +118,20 @@ export const ui = {
 			section: "Contact",
 			description:
 				"I am available for freelance work and full-time roles. If you have a project that needs a creative touch, I would love to hear about it.",
+			inputNamePlaceholder: "Jhon Doe",
+			inputNameLabel: "Name",
+			inputEmailPlaceholder: "email@example.com",
+			inputEmailLabel: "Email",
+			inputMessagePlaceholder: "Write your message here...",
+			inputMessageLabel: "Message",
+			buttonSubmit: "Send message",
+			status: {
+				idle: "Send message",
+				pending: "Sending...",
+				success: "Your message sent successfully",
+				error:
+					"An error occurred while sending the message. Please try again later.",
+			},
 		},
 		layout: {
 			title: "Jonathan Cervantes Alarcon | Frontend Developer",
@@ -140,6 +178,14 @@ export const ui = {
 			title: "Sorry, the page you are looking for does not exist.",
 			description: "The URL may be incorrect, or the page may have been moved.",
 			cta: "Back to home",
+		},
+		errors: {
+			forms: {
+				emailInvalid: "Enter a valid email address",
+				emailRequired: "Enter your email address",
+				nameRequired: "Enter your name",
+				messageRequired: "Enter a message",
+			},
 		},
 	},
 } as const satisfies Record<AppLocale, Record<string, unknown>>
