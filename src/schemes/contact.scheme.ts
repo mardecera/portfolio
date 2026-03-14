@@ -1,5 +1,5 @@
 import type { TFunction } from "@/types/i18n.types"
-import * as z from "zod"
+import * as z from "zod/v4"
 
 export const createContactSchema = (t: TFunction) =>
 	z.object({
