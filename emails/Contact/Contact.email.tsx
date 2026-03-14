@@ -4,11 +4,7 @@ import { Heading, Text } from "@react-email/components"
 import type { ContactEmailProps } from "./Contact.email.types"
 
 const ContactEmailTemplate = (props: ContactEmailProps) => {
-	const {
-		name = "Jhon Cervantes",
-		email = "mardecera.personal@gmail.com",
-		message = "Hola, me gustaría contactarte para hablar sobre una posible colaboración. ¿Podríamos agendar una reunión para discutirlo? Quedo atento a tu respuesta. ¡Gracias!",
-	} = props
+	const { name, email, message } = props
 
 	return (
 		<Html>

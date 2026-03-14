@@ -6,7 +6,7 @@ import { Heading, Text } from "@react-email/components"
 import type { ThanksEmailProps } from "./Thanks.email.types"
 
 const ThanksEmailTemplate = (props: ThanksEmailProps) => {
-	const { name = "Jhon Cervantes" } = props
+	const { name } = props
 
 	return (
 		<Html>
