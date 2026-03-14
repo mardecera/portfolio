@@ -48,9 +48,6 @@
 	},
 	"pnpm": {
 		"ignoredBuiltDependencies": ["@biomejs/biome", "esbuild"],
-		"onlyBuiltDependencies": ["@parcel/watcher", "lefthook", "sharp"],
-		"overrides": {
-			"vite": "6.2.6"
-		}
+		"onlyBuiltDependencies": ["@parcel/watcher", "lefthook", "sharp"]
 	}
 }
