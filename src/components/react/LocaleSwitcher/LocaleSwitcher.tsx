@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
 
-import { DEFAULT_LOCALE, stripLocaleFromPath } from "@/utils/locale.utils"
+import { DEFAULT_LOCALE } from "@/utils/locale.utils"
 import Dropdown from "../Dropdown/Dropdown"
-import { getLocale } from "./LocaleSwitcher.helpers"
 import type { LocaleSwitcherProps } from "./LocaleSwitcher.type"
 
 const LocaleSwitcher = (props: LocaleSwitcherProps) => {
-	const { currentLocale, currentPath, className } = props
+	const { currentLocale, localeHrefs, className } = props
 	const [search, setSearch] = useState("")
 	const [hash, setHash] = useState("")
 
@@ -15,8 +14,7 @@ const LocaleSwitcher = (props: LocaleSwitcherProps) => {
 		setHash(window.location.hash)
 	}, [])
 
-	const relativePath = stripLocaleFromPath(currentPath)
-	const getLocaleHref = getLocale(relativePath || "", search, hash)
+	const withLocation = (href: string) => `${href}${search}${hash}`
 
 	return (
 		<Dropdown
@@ -30,12 +28,12 @@ const LocaleSwitcher = (props: LocaleSwitcherProps) => {
 				{
 					label: "Español",
 					value: DEFAULT_LOCALE,
-					href: getLocaleHref("es"),
+					href: withLocation(localeHrefs.es),
 				},
 				{
 					label: "English",
 					value: "en",
-					href: getLocaleHref("en"),
+					href: withLocation(localeHrefs.en),
 				},
 			]}
 			className={className}
