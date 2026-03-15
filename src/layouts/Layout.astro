@@ -7,7 +7,6 @@ import { useTranslations } from "@/i18n/utils"
 import { SUPPORTED_LOCALES } from "@/utils/locale.utils"
 import { getLocaleFromPath, stripLocaleFromPath } from "@/utils/locale.utils"
 import "../styles/global.css"
-import { ReactQueryProvider } from "@/providers/QueryClient/queryClient.provider"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)
@@ -87,30 +86,30 @@ const xDefaultHref = pagePath
 		</main>
 		<Footer />
 	</body>
+
+	<style is:global>
+		.geist {
+			font-family: "Geist", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 100 900;
+			font-style: normal;
+			line-height: 1.5;
+		}
+
+		html,
+		body {
+			margin: 0;
+			width: 100%;
+			font-family:
+				"Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+				"Nimbus Sans", Arial, sans-serif;
+			min-height: 100dvh;
+			display: flex;
+			flex-direction: column;
+		}
+
+		main {
+			flex: 1;
+		}
+	</style>
 </html>
-
-<style is:global>
-	.geist {
-		font-family: "Geist", sans-serif;
-		font-optical-sizing: auto;
-		font-weight: 100 900;
-		font-style: normal;
-		line-height: 1.5;
-	}
-
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		font-family:
-			"Geist", Inter, Roboto, "Helvetica Neue", "Arial Nova",
-			"Nimbus Sans", Arial, sans-serif;
-		min-height: 100dvh;
-		display: flex;
-		flex-direction: column;
-	}
-
-	main {
-		flex: 1;
-	}
-</style>

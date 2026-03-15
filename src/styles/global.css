@@ -202,3 +202,56 @@
 		grid-column: 1 / 4;
 	}
 }
+
+@layer utilities {
+	@keyframes toast-enter {
+		from {
+			transform: translateX(24px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes toast-exit {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+		to {
+			transform: translateX(24px);
+			opacity: 0;
+		}
+	}
+
+	.toast-enter {
+		animation: toast-enter 220ms ease-out both;
+	}
+
+	.toast-exit {
+		animation: toast-exit 220ms ease-in both;
+	}
+
+	@keyframes toast-time {
+		from {
+			transform: scaleX(1);
+		}
+		to {
+			transform: scaleX(0);
+		}
+	}
+
+	.toast .time {
+		transform-origin: left;
+		animation-name: toast-time;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+		animation-play-state: running;
+	}
+
+	.toast:hover .time {
+		animation-play-state: paused;
+	}
+}

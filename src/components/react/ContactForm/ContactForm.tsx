@@ -1,31 +1,27 @@
-import ConffetiIcon from "@/assets/svg/confetti.svg?react"
-import SendIcon from "@/assets/svg/send.svg?react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useMemo, useState } from "react"
+import { Controller, useForm } from "react-hook-form"
+
 import { useTranslations } from "@/i18n/utils"
+import { useToast } from "@/providers/Toast/toast.provider"
 import { createContactSchema } from "@/schemes/contact.scheme"
 import type { ContactFormData } from "@/schemes/contact.scheme"
 import { useSendEmail } from "@/services/contact/contact.service.hook"
 import { DEFAULT_LOCALE } from "@/utils/locale.utils"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useMemo, useState } from "react"
-import { Controller, useForm } from "react-hook-form"
 import Button from "../Button/Button"
 import Input from "../Input/Input"
 import { getStatus } from "./ContactForm.helpers"
 import type { ContactFormProps, Status } from "./ContactForm.types"
 
-const IconStatus = ({ status }: { status: Status }) => (
-	<>
-		{status === "idle" ? (
-			<SendIcon className="w-5 h-5 shrink-0" />
-		) : (
-			<ConffetiIcon className="w-5 h-5 shrink-0" />
-		)}
-	</>
-)
+import ConffetiIcon from "@/assets/svg/confetti.svg?react"
+import ErrorIcon from "@/assets/svg/error.svg?react"
+import SendIcon from "@/assets/svg/send.svg?react"
+import Textarea from "../Textarea/Textarea"
 
 const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 	const t = useTranslations(locale)
 	const sendEmailMutation = useSendEmail()
+	const { showToast } = useToast()
 
 	const [status, setStatus] = useState<Status>("idle")
 
@@ -44,27 +40,43 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 	const { handleSubmit } = form
 
 	const onSubmit = (data: ContactFormData) => {
-		console.log(data)
+		const payload = {
+			...data,
+			locale,
+		}
 
 		try {
 			setStatus("pending")
-			sendEmailMutation.mutate(data, {
+			sendEmailMutation.mutate(payload, {
 				onError: (error) => {
 					console.error("[Error sending email]", { error })
-					setStatus("error")
+
+					showToast({
+						header: t("contact.toastTitle"),
+						body: t("contact.status.error"),
+						icon: <ErrorIcon className="h-4 w-4" />,
+					})
 				},
 				onSuccess: () => {
-					setStatus("success")
 					form.reset()
+					showToast({
+						header: t("contact.toastTitle"),
+						body: t("contact.status.success"),
+						icon: <ConffetiIcon className="h-4 w-4" />,
+					})
 				},
 				onSettled: () => {
-					setTimeout(() => {
-						setStatus("idle")
-					}, 3000)
+					setStatus("idle")
 				},
 			})
 		} catch (error) {
 			console.error("[Unexpected error]", { error })
+
+			setStatus("idle")
+			showToast({
+				header: t("contact.toastTitle"),
+				body: t("contact.status.error"),
+			})
 		}
 	}
 
@@ -87,6 +99,7 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 							{...field}
 							error={form.formState.errors.name?.message}
 							placeholder={t("contact.inputNamePlaceholder")}
+							autoComplete="on"
 						/>
 					)}
 				/>
@@ -100,6 +113,7 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 							{...field}
 							error={form.formState.errors.email?.message}
 							placeholder={t("contact.inputEmailPlaceholder")}
+							autoComplete="on"
 						/>
 					)}
 				/>
@@ -107,11 +121,12 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 					name="message"
 					control={form.control}
 					render={({ field }) => (
-						<Input
+						<Textarea
 							label={t("contact.inputMessageLabel")}
 							{...field}
 							error={form.formState.errors.message?.message}
 							placeholder={t("contact.inputMessagePlaceholder")}
+							rows={4}
 						/>
 					)}
 				/>
@@ -119,7 +134,7 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 					<Button
 						type="submit"
 						className="ml-auto"
-						icon={<IconStatus status={status} />}
+						icon={<SendIcon className="w-5 h-5 shrink-0" />}
 						iconPosition="right"
 						isLoading={sendEmailMutation.isPending}
 						isDisabled={sendEmailMutation.isPending}

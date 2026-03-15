@@ -30,6 +30,7 @@ export const ui = {
 			inputMessageLabel: "Mensaje",
 			buttonSubmit: "Enviar mensaje",
 			sendSuccess: "Mensaje a sido enviado con exito",
+			toastTitle: "Enviado",
 			status: {
 				idle: "Enviar mensaje",
 				pending: "Enviando...",
@@ -123,6 +124,7 @@ export const ui = {
 			inputMessagePlaceholder: "Write your message here...",
 			inputMessageLabel: "Message",
 			buttonSubmit: "Send message",
+			toastTitle: "Sent",
 			status: {
 				idle: "Send message",
 				pending: "Sending...",

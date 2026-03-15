@@ -2,21 +2,47 @@ export const prerender = false
 
 import { RESEND_API_KEY } from "astro:env/server"
 import type { APIRoute } from "astro"
+import { Resend } from "resend"
+
+import { contactSchema } from "@/schemes/api/contact.scheme"
 import ContactEmailTemplate from "emails/Contact/Contact.email"
 import ThanksEmailTemplate from "emails/Thanks/Thanks.email"
-import { Resend } from "resend"
+import { renderToStaticMarkup } from "react-dom/server"
 
 const resend = new Resend(RESEND_API_KEY)
 
 export const POST: APIRoute = async ({ request }) => {
 	const data = await request.json()
-	const { name, email, message } = data
+
+	// This is a preview of the email template rendering.
+	// const html = renderToStaticMarkup(ThanksEmailTemplate({
+	// 	name,
+	// 	locale
+	// }))
+
+	const body = contactSchema.parse(data)
+	const { name, email, message, locale } = body
+
+	const subjectUserText = {
+		es: "Información recibida",
+		en: "Information received",
+	}[locale]
+
+	const errorMessage = {
+		es: "No se pudo enviar el email. Intenta más tarde.",
+		en: "Failed to send email. Please try again later.",
+	}[locale]
+
+	const successMessage = {
+		es: "Email enviado correctamente.",
+		en: "Email sent successfully.",
+	}[locale]
 
 	try {
 		await resend.emails.send({
 			from: "Resend <mardecera.com@resend.dev>",
 			to: "mardecera.personal@gmail.com",
-			subject: "Alguien te ha contactado desde tu portfolio",
+			subject: "Contactado desde tu portfolio",
 			react: ContactEmailTemplate({
 				name,
 				email,
@@ -27,9 +53,10 @@ export const POST: APIRoute = async ({ request }) => {
 		await resend.emails.send({
 			from: "Jonathan Cervantes <mardecera.com@resend.dev>",
 			to: email,
-			subject: "Gracias por contactarme",
+			subject: subjectUserText,
 			react: ThanksEmailTemplate({
 				name,
+				locale,
 			}),
 		})
 	} catch (error) {
@@ -39,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
 			JSON.stringify({
 				success: false,
 				error: "email_send_failed",
-				message: "No se pudo enviar el email. Intenta mas tarde.",
+				message: errorMessage,
 				detail: error instanceof Error ? error.message : String(error),
 				data: { name, email, message },
 				receivedAt: new Date().toISOString(),
@@ -54,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
 	return new Response(
 		JSON.stringify({
 			success: true,
-			message: "Email enviado correctamente.",
+			message: successMessage,
 			data: { name, email, message },
 			receivedAt: new Date().toISOString(),
 		}),

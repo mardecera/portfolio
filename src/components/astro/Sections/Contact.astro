@@ -1,7 +1,7 @@
 ---
+import ContactForm from "@/components/ContactForm/ContactForm.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import ContactFormWithProvider from "@/components/react/ContactForm/ContactFormWithProvider"
 import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
 import EmailOutline from "@/ui/icons/EmailOutline.astro"
@@ -52,10 +52,7 @@ const t = useTranslations(currentLocale)
 					</div>
 				</div>
 				<div class="flex-1 -mt-5">
-					<ContactFormWithProvider
-						client:load
-						locale={currentLocale}
-					/>
+					<ContactForm />
 				</div>
 			</div>
 		</div>
@@ -76,6 +73,7 @@ const t = useTranslations(currentLocale)
 				display: flex;
 				gap: 2rem;
 				margin-top: 1rem;
+				flex-wrap: wrap;
 
 				.info {
 					flex: 1;
