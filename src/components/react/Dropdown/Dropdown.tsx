@@ -97,7 +97,7 @@ const Dropdown = (props: DropdownProps) => {
 		<div className={cn("dropdown w-fit", className)}>
 			<button
 				ref={triggerRef}
-				className="dropdown-trigger bg-white rounded-full! border! border-(--gray-color-300)! hover:border-(--primary-color-500)! px-4! gap-2! hover:text-(--primary-color-500)!"
+				className="dropdown-trigger bg-white rounded-full! border! border-(--gray-color-300)! hover:border-(--primary-color-500)! px-4! gap-2! hover:text-(--primary-color-500)! flex h-11 items-center justify-center text-[14px] font-medium cursor-pointer"
 				type="button"
 				aria-expanded={isOpen}
 				aria-haspopup="menu"

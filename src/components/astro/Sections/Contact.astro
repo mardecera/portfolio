@@ -1,7 +1,7 @@
 ---
+import ContactForm from "@/components/ContactForm/ContactForm.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
-import ContatcForm from "@/components/react/ContactForm"
 import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
 import EmailOutline from "@/ui/icons/EmailOutline.astro"
@@ -19,7 +19,7 @@ const t = useTranslations(currentLocale)
 		<div class="container">
 			<TitleOfSection>{t("contact.section")}</TitleOfSection>
 			<div class="content">
-				<div class="info">
+				<div class="info flex-1">
 					<p class="font-medium">{t("contact.description")}</p>
 					<div class="contacts">
 						<ul>
@@ -51,6 +51,9 @@ const t = useTranslations(currentLocale)
 						</ul>
 					</div>
 				</div>
+				<div class="flex-1 -mt-5">
+					<ContactForm />
+				</div>
 			</div>
 		</div>
 	</MaxContainer>
@@ -70,6 +73,7 @@ const t = useTranslations(currentLocale)
 				display: flex;
 				gap: 2rem;
 				margin-top: 1rem;
+				flex-wrap: wrap;
 
 				.info {
 					flex: 1;

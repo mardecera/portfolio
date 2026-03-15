@@ -1,14 +1,6 @@
+import type { DotNestedKeys, Messages } from "@/types/i18n.types"
 import type { AppLocale } from "@/utils/locale.utils"
 import { fallbackLocale, ui } from "./ui"
-
-type Messages = (typeof ui)[typeof fallbackLocale]
-type DotNestedKeys<T> = T extends object
-	? {
-			[K in keyof T & string]: T[K] extends object
-				? `${K}.${DotNestedKeys<T[K]>}` | K
-				: K
-		}[keyof T & string]
-	: never
 
 const getNestedValue = (obj: Record<string, unknown>, key: string) => {
 	return key.split(".").reduce<unknown>((acc, part) => {
