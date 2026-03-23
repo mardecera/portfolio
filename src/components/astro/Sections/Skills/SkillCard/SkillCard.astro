@@ -1,0 +1,37 @@
+---
+import Tag from "@/components/astro/Tag/Tag.astro"
+import { cn } from "@/utils/common.utils"
+
+interface Props {
+	title: string
+	tecnologies: string[]
+	className?: string
+	description?: string
+}
+
+const { title, tecnologies, description, className } = Astro.props
+---
+
+<div
+	class={cn(
+		"flex flex-col gap-4 rounded-[20px] border border-white/8 bg-white/3 p-8 text-white",
+		className
+	)}
+>
+	<div class="flex flex-col gap-4">
+		<span
+			class="flex h-13 w-13 items-center justify-center rounded-[14px] bg-white/5 border border-white/10"
+		>
+			<slot />
+		</span>
+		<div class="space-x-2">
+			<h3 class="font-semibold text-[17px] leading-6.5">{title}</h3>
+			<span class="font-normal text-[13px] leading-5.25 text-gray-400"
+				>{description}</span
+			>
+		</div>
+	</div>
+	<ul class="flex flex-wrap gap-2">
+		{tecnologies.map((tecnology) => <Tag>{tecnology}</Tag>)}
+	</ul>
+</div>

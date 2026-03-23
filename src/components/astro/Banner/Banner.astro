@@ -1,0 +1,52 @@
+---
+import MaxContainer from "@/components/astro/MaxContainer.astro"
+import { CONTACT } from "@/constants/contact"
+import { useTranslations } from "@/i18n/utils"
+import WhatsAppIcon from "@/assets/svg/whatsapp.svg"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const { whatsapp, phones } = CONTACT
+const linkToWhatsapp = `${whatsapp.baseLink}${phones.pe.phoneNumber}?text=${encodeURIComponent(whatsapp.pe.message)}`
+---
+
+<div id="banner" class="py-10">
+	<div
+		class="flex flex-col items-center gap-4 p-5 sm:p-12 text-white bg-primary-500 rounded-3xl overflow-hidden relative"
+	>
+		<div
+			class="w-35 h-35 bg-white/20 rounded-full aspect-square absolute left-0 bottom-0 -translate-x-1/4 translate-y-1/4 pointer-events-none z-0"
+		>
+		</div>
+		<div
+			class="w-50 h-50 bg-white/20 rounded-full aspect-square absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 pointer-events-none z-0"
+		>
+		</div>
+		<div class="relative z-2">
+			<h1
+				class="m-0 text-[clamp(2rem,1.7895rem+1.0526vw,2.5rem)] font-bold leading-12 text-center"
+			>
+				{t("banner.title")}
+			</h1>
+			<p
+				class="mt-4 max-w-104.25 mx-auto text-center text-[16px] font-normal leading-6 opacity-75"
+			>
+				{t("banner.description")}
+			</p>
+		</div>
+		<div class="relative z-2 mx-auto">
+			<ButtonLink
+				type="secondary"
+				href={linkToWhatsapp}
+				className="group"
+			>
+				{t("banner.contact")}
+				<WhatsAppIcon
+					class="w-5 h-5 relative group-hover:translate-x-1.5 transition-all"
+				/>
+			</ButtonLink>
+		</div>
+	</div>
+</div>
