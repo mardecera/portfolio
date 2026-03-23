@@ -1,11 +1,11 @@
-import { useTranslations } from "@/i18n/utils"
+import type { TFunction } from "@/types/i18n.types"
 
-export const getSkills = (currentLocale: "es" | "en") => {
-	const t = useTranslations(currentLocale)
+export const getSkills = (t: TFunction) => {
 	return [
 		{
-			icon: "Front",
+			icon: "tools",
 			title: t("skills.support"),
+			description: t("skills.supportDescription"),
 			tecnologies: [
 				"Git",
 				"GitHub",
@@ -18,8 +18,9 @@ export const getSkills = (currentLocale: "es" | "en") => {
 			],
 		},
 		{
-			icon: "Responsive",
+			icon: "stack",
 			title: t("skills.frontend"),
+			description: t("skills.frontendDescription"),
 			tecnologies: [
 				"HTML5",
 				"CSS3",
@@ -34,8 +35,9 @@ export const getSkills = (currentLocale: "es" | "en") => {
 			],
 		},
 		{
-			icon: "Tools",
+			icon: "test",
 			title: t("skills.testing"),
+			description: t("skills.testingDescription"),
 			tecnologies: [
 				"Vitest",
 				"React Testing Library",

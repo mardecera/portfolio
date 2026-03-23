@@ -1,7 +1,7 @@
 ---
+import ContactFormIsland from "@/components/react/ContactForm/ContactFormIsland"
 import { useTranslations } from "@/i18n/utils"
 import { getLocaleFromPath } from "@/utils/locale.utils"
-import ContactFormIsland from "../react/ContactForm/ContactFormIsland"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)

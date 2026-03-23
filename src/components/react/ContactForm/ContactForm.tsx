@@ -85,9 +85,9 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 	}
 
 	return (
-		<div className="bg-white p-6 rounded-xl">
+		<div className="bg-white p-6 sm:p-12.25 rounded-3xl sm:rounded-[48px] w-full">
 			<form
-				className="flex flex-col gap-1"
+				className="flex flex-col gap-2"
 				onSubmit={handleSubmit(onSubmit, onError)}
 			>
 				<Controller
@@ -127,13 +127,15 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 							error={form.formState.errors.message?.message}
 							placeholder={t("contact.inputMessagePlaceholder")}
 							rows={4}
+							autoComplete="on"
+							textareaClassName="resize-none"
 						/>
 					)}
 				/>
 				<div>
 					<Button
 						type="submit"
-						className="ml-auto"
+						className="ml-auto w-full"
 						icon={<SendIcon className="w-5 h-5 shrink-0" />}
 						iconPosition="right"
 						isLoading={sendEmailMutation.isPending}
