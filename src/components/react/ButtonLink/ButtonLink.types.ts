@@ -1,7 +1,7 @@
 export type VariantButton = "primary" | "secondary" | "outline"
 export type SizeButton = "sm" | "md" | "lg"
 
-export type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
+export type ButtonLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 	variant?: VariantButton
 	size?: SizeButton
 	icon?: React.ReactNode

@@ -1,0 +1,19 @@
+---
+import { cn } from "@/utils/common.utils"
+
+const props = Astro.props
+const { text, type = "default", className, active } = props
+---
+
+<span
+	class={cn(
+		"bg-white/10 rounded-full py-1.5 px-4 flex w-fit border border-white/10 items-center gap-2",
+		className
+	)}
+>
+	<div
+		class="relative aspect-square w-2 h-2 rounded-full bg-success-600 after:animate-pulsex after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:bg-white/20 after:w-2.5 after:h-2.5 after:rounded-full after:-z-1"
+	>
+	</div>
+	<span class="font-medium text-[12px]">{text}</span>
+</span>

@@ -1,0 +1,37 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n"
+import BracketsIcon from "@/assets/brackets.svg"
+import { useTranslations } from "@/i18n/utils"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+import Link from "../Link/Link.astro"
+import { getLinks } from "./Header.helpers"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const homeHref = getRelativeLocaleUrl(currentLocale)
+const t = useTranslations(currentLocale)
+const links = getLinks(t)
+---
+
+<header
+	id="header"
+	class="w-full wrapper sticky top-0 sm:top-auto sm:fixed text-white border-b border-white/10 py-7 bg-black z-99"
+>
+	<div class="w-full flex flex-row justify-between">
+		<Link href={homeHref} className="flex gap-4 items-center">
+			<BracketsIcon class="w-6 h-6" />
+			<span class="text-[16px] font-bold leading-[100%]">JCA</span>
+		</Link>
+		<div class="space-x-8">
+			{
+				links.map((link) => (
+					<Link
+						className="hover:text-primary-500"
+						href={`${homeHref}${link.href}`}
+					>
+						<span class="text-sm font-medium">{link.label}</span>
+					</Link>
+				))
+			}
+		</div>
+	</div>
+</header>

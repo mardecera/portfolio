@@ -13,13 +13,15 @@ export const ui = {
 			download: "Descargar CV",
 		},
 		banner: {
-			title: "¿Listo para hacer algo increible?",
+			title: "¿Tienes un proyecto en mente?",
 			description:
-				"Estoy emocionado por desarrollar tus ideas en nuevos proyectos y aplicaciones.",
-			contact: "Contactame",
+				"Estoy listo para ayudarte a convertir tus ideas en productos digitales reales. Hablemos.",
+			contact: "Contactame ahora",
 		},
 		contact: {
 			section: "Contacto",
+			title1: "Conversemos sobre tu",
+			title2: "próximo proyecto",
 			description:
 				"Estoy disponible para trabajar como freelance y para posiciones de tiempo completo. Si tienes un proyecto que necesita un toque creativo, me encantaria escuchar sobre el.",
 			inputNamePlaceholder: "Jhon Doe",
@@ -46,6 +48,11 @@ export const ui = {
 		},
 		footer: {
 			copy: "Todos los derechos reservados",
+			brand:
+				"Construyendo experiencias digitales excepcionales con pasión por el detalle y el código de alta calidad.",
+			titleSections: "Secciones",
+			titleNetwork: "Social",
+			poweredBy: "Hecho con ♥️ por JCA",
 		},
 		header: {
 			about: "Sobre mi",
@@ -54,15 +61,19 @@ export const ui = {
 			contact: "Contacto",
 		},
 		hero: {
-			badge: "Desarrollador Frontend",
+			badge: "Desarrollador Fullstack",
 			description:
 				"Construyo aplicaciones web optimizadas, responsive y estructuradas con un enfoque en codigo limpio y excelente experiencia de usuario.",
 			projects: "Ver mi trabajo",
 			contact: "Contactame",
+			whatsappMessage:
+				"Hola, ¿qué tal? Estoy interesado en trabajar contigo en un proyecto. 🚀",
 		},
 		projects: {
 			section: "Proyectos",
 			title: "Una seleccion de mis proyectos recientes y personales",
+			description:
+				"He trabajado en proyectos que van desde aplicaciones móviles hasta sitios web empresariales.",
 			viewProject: "Ver proyecto",
 			viewAll: "Ver todos los proyectos",
 			pollosControlDescription:
@@ -76,9 +87,12 @@ export const ui = {
 			section: "Habilidades",
 			title:
 				"Estas son las tecnologias y herramientas con las que trabajo para dar vida a mis ideas.",
-			support: "Desarrollo y Herramientas de apoyo",
+			support: "Desarrollo y Herramientas",
+			supportDescription: "Entorno de desarrollo y control de versiones",
 			frontend: "Frontend y Frameworks",
+			frontendDescription: "Tecnologías para construir interfaces modernas",
 			testing: "Testing, APIs y Deploy",
+			testingDescription: "Calidad, integración y despliegue continuo",
 		},
 		notFound: {
 			title: "Lo siento, la pagina que buscas no existe.",
@@ -108,13 +122,15 @@ export const ui = {
 			download: "Download CV",
 		},
 		banner: {
-			title: "Ready to build something incredible?",
+			title: "Do you have a project in mind?",
 			description:
-				"I am excited to help bring your ideas to life through new projects and applications.",
+				"I am ready to help you turn your ideas into real digital products. Let's talk.",
 			contact: "Contact me",
 		},
 		contact: {
 			section: "Contact",
+			title1: "Let's talk about your",
+			title2: "next project",
 			description:
 				"I am available for freelance work and full-time roles. If you have a project that needs a creative touch, I would love to hear about it.",
 			inputNamePlaceholder: "Jhon Doe",
@@ -140,6 +156,11 @@ export const ui = {
 		},
 		footer: {
 			copy: "All rights reserved",
+			brand:
+				"Building exceptional digital experiences with passion for detail and high-quality code.",
+			titleSections: "Sections",
+			titleNetworks: "Networks",
+			poweredBy: "Building with ♥️ by JCA",
 		},
 		header: {
 			about: "About me",
@@ -148,15 +169,19 @@ export const ui = {
 			contact: "Contact",
 		},
 		hero: {
-			badge: "Frontend Developer",
+			badge: "FullStack Developer",
 			description:
 				"I build optimized, responsive, and well-structured web applications with a focus on clean code and a strong user experience.",
 			projects: "See my work",
 			contact: "Contact me",
+			whatsappMessage:
+				"Hello, how are you? I'm interested in working with you on a project. 🚀",
 		},
 		projects: {
 			section: "Projects",
 			title: "A selection of my recent and personal projects",
+			description:
+				"I have worked on projects ranging from mobile applications to enterprise websites.",
 			viewProject: "View project",
 			viewAll: "View all projects",
 			pollosControlDescription:
@@ -170,9 +195,12 @@ export const ui = {
 			section: "Skills",
 			title:
 				"These are the technologies and tools I use to bring my ideas to life.",
-			support: "Development and Supporting Tools",
+			support: "Development and Tools",
+			supportDescription: "Development environment and version control",
 			frontend: "Frontend and Frameworks",
+			frontendDescription: "Technologies to build modern interfaces",
 			testing: "Testing, APIs and Deployment",
+			testingDescription: "Quality, integration and continuous deployment",
 		},
 		notFound: {
 			title: "Sorry, the page you are looking for does not exist.",

@@ -13,3 +13,10 @@ import { twMerge } from "tailwind-merge"
 export const cn = (...inputs: ClassValue[]): string => {
 	return twMerge(clsx(inputs))
 }
+
+export const arrayWithKeyGenerator = (length: number) => {
+	return Array.from({ length: length }, (_, index) => ({
+		key: index,
+		value: index,
+	}))
+}

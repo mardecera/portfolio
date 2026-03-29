@@ -1,9 +1,11 @@
 import { CONSTANTS } from "@/constants/constants"
+import type { TFunction } from "@/types/i18n.types"
 
-const { WHATSAPP_BASE_LINK, WHATSAPP_PHONE_NUMBER } = CONSTANTS
-const { WHATSAPP_MESSAGE } = CONSTANTS
+const { WHATSAPP } = CONSTANTS
+const { BASE_URL, PHONE_NUMBER } = WHATSAPP
 
-export const getLinkToWhatsapp = () => {
-	const message = encodeURIComponent(WHATSAPP_MESSAGE)
-	return `${WHATSAPP_BASE_LINK}${WHATSAPP_PHONE_NUMBER}?text=${message}`
+export const getLinkToWhatsapp = (message: string) => {
+	const encodedMessage = encodeURIComponent(message)
+
+	return `${BASE_URL}${PHONE_NUMBER}?text=${encodedMessage}`
 }

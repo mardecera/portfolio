@@ -12,12 +12,12 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
 		return (
 			<div className={cn("input-wrapper flex flex-col gap-0.5", className)}>
-				<div className="flex flex-col gap-1">
+				<div className="flex flex-col gap-3">
 					{label ? (
 						<label
 							htmlFor={inputId}
 							className={cn(
-								"label text-[14px] leading-[120%] font-semibold text-(--primary-color-600) ml-5",
+								"label text-[14px] leading-[120%] font-semibold uppercase",
 								labelClassName,
 							)}
 						>
@@ -29,14 +29,14 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 						id={inputId}
 						name={name}
 						className={cn(
-							"border border-(--primary-color-300) rounded-3xl py-2.5 px-5 text-[14px] focus:border-(--primary-color-300) focus:outline-none focus:ring-2 focus:ring-(--primary-color-300) placeholder:text-gray-400 placeholder:font-light disabled:cursor-not-allowed disabled:opacity-50",
+							"bg-shark-50 rounded-2xl py-5 px-5 text-[14px] focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 placeholder:text-gray-400 placeholder:font-light disabled:cursor-not-allowed disabled:opacity-50 border border-gray-200 w-full",
 							textareaClassName,
 						)}
 						{...restTwo}
 					/>
 				</div>
 
-				<p className="error text-red-400 text-[12px] ml-5">
+				<p className="error text-red-400 text-[12px]">
 					{!error && <span className="opacity-0">.</span>}
 					{error && <span>{error}</span>}
 				</p>

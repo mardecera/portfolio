@@ -10,57 +10,25 @@ const t = useTranslations(currentLocale)
 ---
 
 <Layout>
-	<section>
+	<section
+		class="flex h-[90dvh] w-full items-center justify-center bg-[#f4f4f5] text-center"
+	>
 		<MaxContainer>
-			<div class="container">
-				<h1>404</h1>
-				<h2>{t("notFound.title")}</h2>
-				<p>{t("notFound.description")}</p>
-				<a href={getRelativeLocaleUrl(currentLocale)}>
+			<div>
+				<h1 class="my-0 text-[10rem]">404</h1>
+				<h2 class="my-0 mb-4 text-[clamp(1.75rem,4vw,2.5rem)]">
+					{t("notFound.title")}
+				</h2>
+				<p class="mx-auto mb-6 max-w-152 text-gray-600">
+					{t("notFound.description")}
+				</p>
+				<a
+					href={getRelativeLocaleUrl(currentLocale)}
+					class="inline-flex min-h-11 items-center justify-center rounded-full bg-black px-5 font-semibold text-white no-underline"
+				>
 					{t("notFound.cta")}
 				</a>
 			</div>
 		</MaxContainer>
 	</section>
 </Layout>
-
-<style>
-	section {
-		text-align: center;
-		background-color: #f4f4f5;
-		width: 100%;
-		height: 90dvh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		& h1 {
-			font-size: 10rem;
-			margin-block: 0rem;
-		}
-
-		& h2 {
-			margin-block: 0rem 1rem;
-			font-size: clamp(1.75rem, 4vw, 2.5rem);
-		}
-
-		& p {
-			max-width: 38rem;
-			margin: 0 auto 1.5rem;
-			color: var(--gray-color-600);
-		}
-
-		& a {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-height: 2.75rem;
-			padding: 0 1.25rem;
-			border-radius: 9999px;
-			background-color: var(--black-color);
-			color: var(--white-color);
-			text-decoration: none;
-			font-weight: 600;
-		}
-	}
-</style>

@@ -1,5 +1,5 @@
 ---
-import ContactForm from "@/components/ContactForm/ContactForm.astro"
+import ContactForm from "@/components/astro/ContactForm/ContactForm.astro"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
 import { CONTACT } from "@/constants/contact"
@@ -10,99 +10,63 @@ import PhoneOutline from "@/ui/icons/PhoneOutline.astro"
 import { phoneNumberFormatter } from "@/utils/formatters/phoneNumberFormatter"
 import { getLocaleFromPath } from "@/utils/locale.utils"
 
+import MailIcon from "@/assets/svg/mail.svg"
+import PhoneIcon from "@/assets/svg/phone.svg"
+import PinIcon from "@/assets/svg/pin.svg"
+
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)
+const phone = phoneNumberFormatter(CONTACT.phoneNumber, "51")
 ---
 
-<div id="contact" class="full-bleed">
-	<MaxContainer>
-		<div class="container">
-			<TitleOfSection>{t("contact.section")}</TitleOfSection>
-			<div class="content">
-				<div class="info flex-1">
-					<p class="font-medium">{t("contact.description")}</p>
-					<div class="contacts">
-						<ul>
-							<li>
-								<span>
-									<EmailOutline size="default" />
-									<span>{CONTACT.email}</span>
-								</span>
-							</li>
-							<li>
-								<span>
-									<PhoneOutline />
-									<span
-										>{
-											phoneNumberFormatter(
-												CONTACT.phoneNumber,
-												"51"
-											)
-										}</span
-									>
-								</span>
-							</li>
-							<li>
-								<span>
-									<MarkOutline />
-									<span>{CONTACT.address}</span>
-								</span>
-							</li>
-						</ul>
-					</div>
+<div id="contact" class="full-bleed bg-gray-100 py-8 sm:py-16">
+	<div class="wrapper">
+		<TitleOfSection>{t("contact.section")}</TitleOfSection>
+		<div class="mt-4 flex flex-wrap gap-10">
+			<div class="flex flex-1 flex-col gap-4">
+				<div class="space-y-6">
+					<h3 class="font-bold text-[44px] leading-12">
+						{t("contact.title1")}
+						<span class="text-primary-500"
+							>{t("contact.title2")}</span
+						>
+					</h3>
+					<p class="font-normal leading-7.25 text-gray-500">
+						{t("contact.description")}
+					</p>
 				</div>
-				<div class="flex-1 -mt-5">
-					<ContactForm />
+				<div>
+					<ul class="flex list-none flex-col gap-2 leading-6.5">
+						<li class="flex items-center gap-4">
+							<div
+								class="p-3 bg-black aspect-square text-white rounded-xl"
+							>
+								<MailIcon class="w-4 h-4" />
+							</div>
+							<span>{CONTACT.email}</span>
+						</li>
+						<li class="flex items-center gap-4">
+							<div
+								class="p-3 bg-black aspect-square text-white rounded-xl"
+							>
+								<PhoneIcon class="w-4 h-4" />
+							</div>
+							<span>{phone}</span>
+						</li>
+						<li class="flex items-center gap-4">
+							<div
+								class="p-3 bg-black aspect-square text-white rounded-xl"
+							>
+								<PinIcon class="w-4 h-4" />
+							</div>
+							<span>{CONTACT.address}</span>
+						</li>
+					</ul>
 				</div>
 			</div>
+			<div class="flex-1 sm:-mt-5">
+				<ContactForm />
+			</div>
 		</div>
-	</MaxContainer>
+	</div>
 </div>
-
-<style>
-	#contact {
-		background-color: var(--gray-color-100);
-		padding-block: 2rem;
-
-		@media only screen and (min-width: 640px) {
-			padding-block: 4rem;
-		}
-
-		& .container {
-			& .content {
-				display: flex;
-				gap: 2rem;
-				margin-top: 1rem;
-				flex-wrap: wrap;
-
-				.info {
-					flex: 1;
-					display: flex;
-					gap: 1rem;
-					flex-direction: column;
-
-					& .contacts {
-						& ul {
-							list-style: none;
-							display: flex;
-							flex-direction: column;
-							gap: 0.5rem;
-
-							& li {
-								& > span {
-									display: flex;
-									gap: 1rem;
-									align-items: center;
-								}
-							}
-						}
-					}
-				}
-
-				.form {
-					flex: 1;
-				}
-			}
-		}
-	}
-</style>
