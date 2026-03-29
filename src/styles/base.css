@@ -1,0 +1,11 @@
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background-color: var(--color-black);
+		font-size: 16px;
+		line-height: 1.5;
+	}
+}

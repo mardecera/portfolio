@@ -1,41 +1,59 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n"
-import Badge from "@/components/astro/Badge.astro"
-import Button from "@/components/astro/Button"
-import MaxContainer from "@/components/astro/MaxContainer.astro"
+import ChatIcon from "@/assets/svg/chat.svg"
+import RigthIcon from "@/assets/svg/rigth.svg"
+import Badge from "@/components/astro/Badge/Badge.astro"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+import { TechGrid } from "@/components/react/TechGrid/TechGrid"
 import { useTranslations } from "@/i18n/utils"
 import WhatsApp from "@/ui/icons/WhatsApp.astro"
 import { getLocaleFromPath } from "@/utils/locale.utils"
 import { getLinkToWhatsapp } from "./Hero.helper"
-import styles from "./Hero.module.css"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
-const linkToWhatsapp = getLinkToWhatsapp()
 const t = useTranslations(currentLocale)
+const whatsappLink = getLinkToWhatsapp(t("hero.whatsappMessage"))
 const projectsHref = `${getRelativeLocaleUrl(currentLocale)}#projects`
 ---
 
-<div id="hero" class={styles.hero}>
-	<MaxContainer className={styles.heroMaxcontainer}>
-		<div class={styles.heroContainer}>
-			<Badge text={t("hero.badge")} className={styles.badge} active />
-			<h1 class="font-bold text-[32px]">Jonathan Cervantes Alarcón</h1>
-			<p class={styles.description}>{t("hero.description")}</p>
-			<div class={styles.ctas}>
-				<Button
-					type="primary"
-					href={projectsHref}
-					className="w-full! sm:w-auto!"
-				>
-					{t("hero.projects")}
-				</Button>
-				<Button
-					type="secondary"
-					href={linkToWhatsapp}
-					icon={WhatsApp}
-					className="w-full! sm:w-auto!">{t("hero.contact")}</Button
-				>
-			</div>
+<div
+	id="hero"
+	class="text-white portrait:min-h-dvh portrait:py-5 landscape:h-fit landscape:px-7.5 md:portrait:min-h-0 md:portrait:aspect-video md:landscape:min-h-dvh md:landscape:px-0 flex items-center justify-center w-full"
+>
+	<div class="tiny:py-10 max-w-180 w-full space-y-5 relative">
+		<div
+			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-50 sm:w-150 sm:h-100 bg-radial-hero pointer-events-none"
+		>
 		</div>
-	</MaxContainer>
+		<Badge text={t("hero.badge")} className="mx-auto" active />
+		<h1 class="font-bold text-clamp-title leading-[100%] text-center">
+			Jonathan Cervantes <br /> Alarcón
+		</h1>
+		<p class="max-w-140 text-center mx-auto opacity-50">
+			{t("hero.description")}
+		</p>
+		<div class="flex justify-center gap-4 flex-col tiny:flex-row">
+			<ButtonLink
+				href={projectsHref}
+				client:load
+				className="group w-full sm:w-auto"
+			>
+				{t("hero.projects")}
+				<RigthIcon
+					class="w-3.5 h-3.5 group-hover:relative group-hover:translate-x-1.5 transition-all"
+				/>
+			</ButtonLink>
+			<ButtonLink
+				client:load
+				className="group w-full sm:w-auto"
+				variant="secondary"
+				href={whatsappLink}
+			>
+				{t("hero.contact")}
+				<ChatIcon
+					class="w-3.5 h-3.5 group-hover:relative group-hover:translate-x-1.5 transition-all"
+				/>
+			</ButtonLink>
+		</div>
+	</div>
 </div>

@@ -1,0 +1,105 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n"
+import BracketsIcon from "@/assets/brackets.svg"
+import { CONTACT } from "@/constants/contact"
+import { useTranslations } from "@/i18n/utils"
+import { getLocaleFromPath, stripLocaleFromPath } from "@/utils/locale.utils"
+import LocaleSwitcher from "@/components/react/LocaleSwitcher/LocaleSwitcher"
+import { getLinks } from "../Header/Header.helpers"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+import GithubIcon from "@/assets/svg/github.svg"
+import LinkedinIcon from "@/assets/svg/linkedin.svg"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const relativePath = stripLocaleFromPath(Astro.url.pathname)
+const localeHrefs = {
+	es: relativePath
+		? getRelativeLocaleUrl("es", relativePath)
+		: getRelativeLocaleUrl("es"),
+	en: relativePath
+		? getRelativeLocaleUrl("en", relativePath)
+		: getRelativeLocaleUrl("en"),
+}
+const t = useTranslations(currentLocale)
+const sectionLinks = getLinks(t)
+---
+
+<footer id="footer" class="bg-white border-t border-gray-100">
+	<div class="wrapper">
+		<div class="flex py-24.5 gap-6 flex-wrap flex-col sm:flex-row">
+			<div class="footer-info flex-1 space-y-6">
+				<div class="flex items-center w-fit gap-2 font-bold">
+					<span
+						class="bg-primary-600 w-8 h-8 flex items-center justify-center rounded-lg"
+					>
+						<BracketsIcon class="w-4 h-4 text-white" />
+					</span>
+					<span>JCA</span>
+				</div>
+				<div class="text-gray-600 max-w-[384px]">
+					{t("footer.brand")}
+				</div>
+			</div>
+			<div
+				class="footer-links flex-1 flex gap-6 flex-wrap flex-col sm:flex-row"
+			>
+				<div class="flex-1 space-y-4">
+					<h3 class="font-bold text-[14px] leading-7">
+						{t("footer.titleSections")}
+					</h3>
+					<ul class="space-y-2 text-gray-600 text-[14px]">
+						{
+							sectionLinks.map((link) => (
+								<li>
+									<a
+										href={`${localeHrefs[currentLocale]}${link.href}`}
+										class="hover:text-primary-500 font-normal leading-6"
+									>
+										{link.label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<div class="flex-1 space-y-4">
+					<h3 class="font-bold text-[14px] leading-7">
+						{t("footer.titleNetwork")}
+					</h3>
+					<div class="flex gap-4">
+						<ButtonLink
+							href={CONTACT.social.github}
+							aria-label="To Github"
+							className="min-h-auto! px-0! py-0! p-3.25! bg-shark-50 text-gray-500 hover:bg-shark-100 rounded-lg"
+						>
+							<span class="w-5! h-5!">
+								<GithubIcon class="w-5 h-5" />
+							</span>
+						</ButtonLink>
+
+						<ButtonLink
+							href={CONTACT.social.linkedin}
+							aria-label="To Linkedin"
+							className="min-h-auto! px-0! py-0! p-3.25! bg-shark-50 text-gray-500 hover:bg-shark-100 rounded-lg"
+						>
+							<LinkedinIcon class="w-5 h-5" />
+						</ButtonLink>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="py-7 border-t border-gray-200 flex justify-between items-center leading-6 text-[14px] flex-col lg:flex-row flex-wrap gap-4"
+		>
+			<div class="text-gray-400 text-center">
+				© 2025 Jonathan Cervantes Alarc&oacute;n. {t("footer.copy")}
+			</div>
+			<div class="text-gray-400">{t("footer.poweredBy")}</div>
+			<LocaleSwitcher
+				client:load
+				currentLocale={currentLocale}
+				localeHrefs={localeHrefs}
+			/>
+		</div>
+	</div>
+</footer>

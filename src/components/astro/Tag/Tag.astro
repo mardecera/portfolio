@@ -1,0 +1,17 @@
+---
+import type { TagProps as Props } from "./Tag.types"
+import { cn } from "@/utils/common.utils"
+import { tagStyles } from "./Tag.styles.ts"
+
+const props: Props = Astro.props
+const { variant = "light" } = props
+---
+
+<span
+	class={cn(
+		"flex rounded-full outline  py-1 px-2.5 font-medium text-[12px] leading-4.5",
+		tagStyles({ variant })
+	)}
+>
+	<slot />
+</span>

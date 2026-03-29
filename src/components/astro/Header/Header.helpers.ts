@@ -1,8 +1,6 @@
-import { useTranslations } from "@/i18n/utils"
+import type { TFunction } from "@/types/i18n.types"
 
-export const getLinks = (currentLocale: "es" | "en") => {
-	const t = useTranslations(currentLocale)
-
+export const getLinks = (t: TFunction) => {
 	return [
 		{
 			label: t("header.about"),

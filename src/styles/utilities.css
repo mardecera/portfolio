@@ -1,0 +1,95 @@
+@layer utilities {
+	.wrapper {
+		--space: 1.5rem;
+		display: grid;
+		grid-template-columns:
+			1fr
+			min(var(--max-width), calc(100% - var(--space) * 2))
+			1fr;
+	}
+
+	.wrapper > * {
+		grid-column: 2;
+	}
+
+	.full-bleed {
+		width: 100%;
+		grid-column: 1 / 4;
+	}
+
+	.text-clamp-title {
+		font-size: clamp(3rem, 2.3684rem + 3.1579vw, 4.5rem);
+	}
+
+	.bg-radial-hero {
+		background: radial-gradient(
+			70.71% 70.71% at 50% 50%,
+			rgba(107, 63, 255, 0.2) 0%,
+			rgba(0, 0, 0, 0) 70%
+		);
+	}
+
+	@keyframes toast-enter {
+		from {
+			transform: translateX(24px);
+			opacity: 0;
+		}
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes toast-exit {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+		to {
+			transform: translateX(24px);
+			opacity: 0;
+		}
+	}
+
+	.toast-enter {
+		animation: toast-enter 220ms ease-out both;
+	}
+
+	.toast-exit {
+		animation: toast-exit 220ms ease-in both;
+	}
+
+	@keyframes toast-time {
+		from {
+			transform: scaleX(1);
+		}
+		to {
+			transform: scaleX(0);
+		}
+	}
+
+	.toast .time {
+		transform-origin: left;
+		animation-name: toast-time;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+		animation-play-state: running;
+	}
+
+	.toast:hover .time {
+		animation-play-state: paused;
+	}
+
+	/* ANIMATIONS */
+	@keyframes pulsex {
+		0% {
+			transform: scale(0.8);
+		}
+		50% {
+			transform: scale(1.3);
+		}
+		100% {
+			transform: scale(0.8);
+		}
+	}
+}

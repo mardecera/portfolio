@@ -1,0 +1,9 @@
+---
+import { cn } from "@/utils/common.utils"
+import type { Props } from "./Link.types"
+
+const props: Props = Astro.props
+const { href, className } = props
+---
+
+<a href={href} class={cn("no-underline", className)}><slot /></a>

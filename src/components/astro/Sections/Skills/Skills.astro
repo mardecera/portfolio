@@ -1,0 +1,45 @@
+---
+import MaxContainer from "@/components/astro/MaxContainer.astro"
+import TitleOfSection from "@/components/astro/TitleOfSection.astro"
+import { useTranslations } from "@/i18n/utils"
+import Front from "@/ui/icons/Front.astro"
+import Responsive from "@/ui/icons/Responsive.astro"
+import Tools from "@/ui/icons/Tools.astro"
+import { getLocaleFromPath } from "@/utils/locale.utils"
+import { getSkills } from "./Skills.helpers"
+import SkillCard from "./SkillCard/SkillCard.astro"
+import ToolIcon from "@/assets/svg/tool.svg"
+import PCIcon from "@/assets/svg/pc.svg"
+import RocketIcon from "@/assets/svg/rocket.svg"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const skills = getSkills(t)
+---
+
+<div id="skills" class="text-white w-full py-16 min-[624px]:py-32">
+	<div class="flex flex-col gap-16">
+		<div class="flex flex-col items-center gap-2">
+			<TitleOfSection>{t("skills.section")}</TitleOfSection>
+			<h2 class="text-center font-normal text-[16px] text-gray-400">
+				{t("skills.title")}
+			</h2>
+		</div>
+		<div class="flex flex-wrap justify-center gap-8">
+			{
+				skills.map(({ icon, title, tecnologies, description }) => (
+					<SkillCard
+						title={title}
+						tecnologies={tecnologies}
+						description={description}
+						className="w-full md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)]"
+					>
+						{icon === "tools" && <ToolIcon class="w-6 h-6" />}
+						{icon === "stack" && <PCIcon class="w-6 h-6" />}
+						{icon === "test" && <RocketIcon class="w-6 h-6" />}
+					</SkillCard>
+				))
+			}
+		</div>
+	</div>
+</div>

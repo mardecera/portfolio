@@ -1,200 +1,93 @@
 ---
 import { Picture } from "astro:assets"
 import ExternalLinkSVG from "@/assets/svg/external-link.svg"
-import Button from "@/components/astro/Button"
-import MaxContainer from "@/components/astro/MaxContainer.astro"
-import Tag from "@/components/astro/Tag.astro"
+// import Button from "@/components/astro/Button"
+import Tag from "@/components/astro/Tag/Tag.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
 import { CONTACT } from "@/constants/contact"
 import { getProjects } from "@/constants/projects"
 import { useTranslations } from "@/i18n/utils"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import { getLocaleFromPath } from "@/utils/locale.utils"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+import GithubIcon from "@/assets/svg/github.svg"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)
 const PROJECTS = getProjects(currentLocale)
 ---
 
-<div id="projects" class="full-bleed">
-	<MaxContainer>
-		<div class="container">
-			<div class="header">
-				<TitleOfSection>{t("projects.section")}</TitleOfSection>
-				<h2>{t("projects.title")}</h2>
-			</div>
-			<div class="content">
-				<div class="list">
-					{
-						PROJECTS.map((project) => (
-							<div class="project">
-								<div class="thumnail">
-									<Picture
-										src={project.image}
-										alt={project.title}
-										formats={["webp", "avif"]}
-									/>
+<div id="projects" class="full-bleed w-full bg-white py-16 sm:py-32">
+	<div class="wrapper">
+		<div
+			class="flex flex-col justify-center items-center gap-6 text-center"
+		>
+			<TitleOfSection>{t("projects.section")}</TitleOfSection>
+			<h2 class="text-[44px] leading-12 font-bold">
+				{t("projects.title")}
+			</h2>
+			<span class="font-normal text-[20px] leading-8 text-gray-400">
+				{t("projects.description")}
+			</span>
+		</div>
+		<div class="space-y-20 mt-20">
+			<div class="flex h-fit flex-wrap justify-center gap-6">
+				{
+					PROJECTS.map((project) => (
+						<div class="flex w-full max-w-86 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white">
+							<div class="aspect-video overflow-hidden">
+								<Picture
+									src={project.image}
+									alt={project.title}
+									formats={["webp", "avif"]}
+								/>
+							</div>
+							<div class="flex flex-1 flex-col justify-between gap-6 border-t border-gray-200 p-8">
+								<div class="space-y-5">
+									<h3 class="text-[24px] leading-4 font-bold text-black">
+										{project.title}
+									</h3>
+									<p class="leading-5.5 text-gray-500">
+										{project.description}
+									</p>
+									<span class="mt-2 flex flex-wrap gap-2">
+										{project?.technologies?.map((tag) => (
+											<Tag variant="dark">{tag}</Tag>
+										))}
+									</span>
 								</div>
-								<div class="body">
-									<div class="info space-y-2">
-										<h3 class="font-bold">
-											{project.title}
-										</h3>
-										<p class="description leading-[140%]">
-											{project.description}
-										</p>
-										<span class="tags">
-											{project?.technologies?.map(
-												(tag) => (
-													<Tag>{tag}</Tag>
-												)
-											)}
-										</span>
-									</div>
-									<div class="links">
-										<Button
-											href={project?.pageUrl ?? ""}
-											disabled={project?.pageUrl === null}
-											type="secondary"
-											className="hover:bg-(--primary-color-500)! hover:text-white! transition-colors duration-200! hover:border-(--primary-color-700)!"
-										>
-											<span>
-												{t("projects.viewProject")}
-											</span>
-											<ExternalLinkSVG class="w-5 h-5" />
-										</Button>
-										<Button
-											href={project?.codeUrl ?? ""}
-											disabled={project?.codeUrl === null}
-											type="secondary"
-											icon={GithubOutline}
-											className="w-11! h-11! px-0!"
-										/>
-									</div>
+								<div class="flex justify-between">
+									<ButtonLink
+										href={project?.pageUrl ?? ""}
+										isDisabled={project?.pageUrl === null}
+										className="bg-black text-white hover:bg-gray-900"
+									>
+										<span>{t("projects.viewProject")}</span>
+										<ExternalLinkSVG class="w-5 h-5" />
+									</ButtonLink>
+									<ButtonLink
+										href={project?.codeUrl ?? ""}
+										isDisabled={project?.codeUrl === null}
+										variant="outline"
+										className="w-11 h-11 px-0"
+									>
+										<GithubIcon class="w-5 h-5" />
+									</ButtonLink>
 								</div>
 							</div>
-						))
-					}
-				</div>
-				<div class="all">
-					<Button
-						type="secondary"
-						href={CONTACT.social.github}
-						icon={GithubOutline}
-						className="hover:bg-(--primary-color-500)! hover:text-white! transition-colors duration-200! hover:border-(--primary-color-700)!"
-					>
-						{t("projects.viewAll")}
-					</Button>
-				</div>
+						</div>
+					))
+				}
+			</div>
+			<div class="mt-4 text-center">
+				<ButtonLink
+					href={CONTACT.social.github}
+					variant="outline"
+					className=""
+				>
+					{t("projects.viewAll")}
+				</ButtonLink>
 			</div>
 		</div>
-	</MaxContainer>
+	</div>
 </div>
-
-<style>
-	#projects {
-		width: 100%;
-		padding-block: 4rem;
-		background-color: var(--white-color);
-
-		@media only screen and (min-width: 640px) {
-			padding-block: 8rem;
-		}
-
-		& .container {
-			& .header {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-			}
-
-			& .content {
-				margin-top: 2rem;
-
-				.list {
-					display: flex;
-					gap: 1rem;
-					height: fit-content;
-					justify-content: center;
-					flex-wrap: wrap;
-
-					& .project {
-						background-color: var(--white-color);
-						border: 1px solid var(--gray-color-200);
-						border-radius: 0.5rem;
-						max-width: 320px;
-						display: flex;
-						flex-direction: column;
-						overflow: hidden;
-
-						& .thumnail {
-							aspect-ratio: 16 / 9;
-							overflow: hidden;
-
-							& picture {
-								width: 100%;
-								height: 100%;
-
-								& img {
-									width: 100%;
-									height: 100%;
-									object-fit: cover;
-									object-position: 0% 0%;
-									transition: transform 0.2s ease-in-out;
-								}
-							}
-						}
-
-						&:hover {
-							& img {
-								transform: scale(1.05);
-							}
-						}
-
-						& .body {
-							padding: 1rem;
-							display: flex;
-							flex-direction: column;
-							gap: 1rem;
-							flex: 1;
-							justify-content: space-between;
-							border-top: 1px solid var(--gray-color-200);
-
-							& .info {
-								& h3 {
-									font-size: 1rem;
-									color: var(--black-color);
-								}
-
-								& .description {
-									font-size: 0.875rem;
-								}
-
-								& .tags {
-									display: flex;
-									gap: 0.5rem;
-									margin-top: 0.5rem;
-									flex-wrap: wrap;
-								}
-							}
-
-							& .links {
-								display: flex;
-								justify-content: space-between;
-							}
-						}
-					}
-				}
-
-				.all {
-					margin-top: 1rem;
-
-					& a {
-						margin: 0 auto;
-					}
-				}
-			}
-		}
-	}
-</style>
