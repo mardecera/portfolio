@@ -20,10 +20,12 @@ import Textarea from "../Textarea/Textarea"
 
 const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 	const t = useTranslations(locale)
-	const sendEmailMutation = useSendEmail()
 	const { showToast } = useToast()
-
 	const [status, setStatus] = useState<Status>("idle")
+
+	const sendEmailMutation = useSendEmail()
+	const { mutate: sendEmail } = sendEmailMutation
+	const { isPending: sendEmailIsPending } = sendEmailMutation
 
 	const statusMessage = useMemo(() => getStatus(status, t), [status, t])
 
@@ -47,7 +49,7 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 
 		try {
 			setStatus("pending")
-			sendEmailMutation.mutate(payload, {
+			sendEmail(payload, {
 				onError: (error) => {
 					console.error("[Error sending email]", { error })
 
@@ -85,7 +87,7 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 	}
 
 	return (
-		<div className="bg-white p-6 sm:p-12.25 rounded-3xl sm:rounded-[48px] w-full">
+		<div className="bg-white p-6 sm:p-12.25 rounded-3xl sm:rounded-2xl w-full">
 			<form
 				className="flex flex-col gap-2"
 				onSubmit={handleSubmit(onSubmit, onError)}
@@ -138,8 +140,8 @@ const ContactForm = ({ locale = DEFAULT_LOCALE }: ContactFormProps) => {
 						className="ml-auto w-full"
 						icon={<SendIcon className="w-5 h-5 shrink-0" />}
 						iconPosition="right"
-						isLoading={sendEmailMutation.isPending}
-						isDisabled={sendEmailMutation.isPending}
+						isLoading={sendEmailIsPending}
+						isDisabled={sendEmailIsPending}
 					>
 						{statusMessage}
 					</Button>

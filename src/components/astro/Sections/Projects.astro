@@ -1,8 +1,7 @@
 ---
 import { Picture } from "astro:assets"
 import ExternalLinkSVG from "@/assets/svg/external-link.svg"
-import Button from "@/components/astro/Button"
-import MaxContainer from "@/components/astro/MaxContainer.astro"
+// import Button from "@/components/astro/Button"
 import Tag from "@/components/astro/Tag/Tag.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
 import { CONTACT } from "@/constants/contact"
@@ -10,6 +9,8 @@ import { getProjects } from "@/constants/projects"
 import { useTranslations } from "@/i18n/utils"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import { getLocaleFromPath } from "@/utils/locale.utils"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+import GithubIcon from "@/assets/svg/github.svg"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)
@@ -18,15 +19,22 @@ const PROJECTS = getProjects(currentLocale)
 
 <div id="projects" class="full-bleed w-full bg-white py-16 sm:py-32">
 	<div class="wrapper">
-		<div class="flex flex-col items-center text-center">
+		<div
+			class="flex flex-col justify-center items-center gap-6 text-center"
+		>
 			<TitleOfSection>{t("projects.section")}</TitleOfSection>
-			<h2>{t("projects.title")}</h2>
+			<h2 class="text-[44px] leading-12 font-bold">
+				{t("projects.title")}
+			</h2>
+			<span class="font-normal text-[20px] leading-8 text-gray-400">
+				{t("projects.description")}
+			</span>
 		</div>
-		<div class="mt-8">
-			<div class="flex h-fit flex-wrap justify-center gap-4">
+		<div class="space-y-20 mt-20">
+			<div class="flex h-fit flex-wrap justify-center gap-6">
 				{
 					PROJECTS.map((project) => (
-						<div class="flex max-w-[320px] flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
+						<div class="flex w-full max-w-86 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white">
 							<div class="aspect-video overflow-hidden">
 								<Picture
 									src={project.image}
@@ -34,52 +42,51 @@ const PROJECTS = getProjects(currentLocale)
 									formats={["webp", "avif"]}
 								/>
 							</div>
-							<div class="flex flex-1 flex-col justify-between gap-4 border-t border-gray-200 p-4">
-								<div class="space-y-2">
-									<h3 class="text-base font-bold text-black">
+							<div class="flex flex-1 flex-col justify-between gap-6 border-t border-gray-200 p-8">
+								<div class="space-y-5">
+									<h3 class="text-[24px] leading-4 font-bold text-black">
 										{project.title}
 									</h3>
-									<p class="text-sm leading-[140%]">
+									<p class="leading-5.5 text-gray-500">
 										{project.description}
 									</p>
 									<span class="mt-2 flex flex-wrap gap-2">
 										{project?.technologies?.map((tag) => (
-											<Tag>{tag}</Tag>
+											<Tag variant="dark">{tag}</Tag>
 										))}
 									</span>
 								</div>
 								<div class="flex justify-between">
-									<Button
+									<ButtonLink
 										href={project?.pageUrl ?? ""}
-										disabled={project?.pageUrl === null}
-										type="secondary"
-										className="hover:bg-(--primary-color-500)! hover:text-white! transition-colors duration-200! hover:border-(--primary-color-700)!"
+										isDisabled={project?.pageUrl === null}
+										className="bg-black text-white hover:bg-gray-900"
 									>
 										<span>{t("projects.viewProject")}</span>
 										<ExternalLinkSVG class="w-5 h-5" />
-									</Button>
-									<Button
+									</ButtonLink>
+									<ButtonLink
 										href={project?.codeUrl ?? ""}
-										disabled={project?.codeUrl === null}
-										type="secondary"
-										icon={GithubOutline}
-										className="w-11! h-11! px-0!"
-									/>
+										isDisabled={project?.codeUrl === null}
+										variant="outline"
+										className="w-11 h-11 px-0"
+									>
+										<GithubIcon class="w-5 h-5" />
+									</ButtonLink>
 								</div>
 							</div>
 						</div>
 					))
 				}
 			</div>
-			<div class="mt-4">
-				<Button
-					type="secondary"
+			<div class="mt-4 text-center">
+				<ButtonLink
 					href={CONTACT.social.github}
-					icon={GithubOutline}
-					className="hover:bg-(--primary-color-500)! hover:text-white! transition-colors duration-200! hover:border-(--primary-color-700)!"
+					variant="outline"
+					className=""
 				>
 					{t("projects.viewAll")}
-				</Button>
+				</ButtonLink>
 			</div>
 		</div>
 	</div>

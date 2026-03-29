@@ -18,7 +18,7 @@ const Button = (props: ButtonProps) => {
 			aria-busy={isLoading}
 			{...restTwo}
 		>
-			{isLoading && <SpinnerIcon className="animate-spin" />}
+			{isLoading && <SpinnerIcon className="w-4 h-4 animate-spin" />}
 			{!isLoading && icon && iconPosition === "left" && icon}
 			{children}
 			{!isLoading && icon && iconPosition === "right" && icon}

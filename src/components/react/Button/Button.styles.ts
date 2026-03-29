@@ -20,7 +20,7 @@ export const buttonStyles = cva(
 				lg: "text-lg px-8 py-3",
 			},
 			disabled: {
-				true: "opacity-50 pointer-events-none",
+				true: "opacity-30 cursor-not-allowed select-none",
 			},
 		},
 		defaultVariants: {

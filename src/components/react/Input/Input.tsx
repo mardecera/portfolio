@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 					id={inputId}
 					name={name}
 					className={cn(
-						"bg-shark-50 rounded-2xl py-5 px-5 text-[14px] focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 placeholder:text-gray-400 placeholder:font-light disabled:cursor-not-allowed disabled:opacity-50 border border-gray-200 w-full",
+						"bg-shark-50 rounded-xl py-4 px-5 text-[14px] focus:border-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 placeholder:text-gray-400 placeholder:font-light disabled:cursor-not-allowed disabled:opacity-50 border border-gray-200 w-full",
 						inputClassName,
 					)}
 					{...restTwo}

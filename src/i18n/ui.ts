@@ -20,6 +20,8 @@ export const ui = {
 		},
 		contact: {
 			section: "Contacto",
+			title1: "Conversemos sobre tu",
+			title2: "próximo proyecto",
 			description:
 				"Estoy disponible para trabajar como freelance y para posiciones de tiempo completo. Si tienes un proyecto que necesita un toque creativo, me encantaria escuchar sobre el.",
 			inputNamePlaceholder: "Jhon Doe",
@@ -70,6 +72,8 @@ export const ui = {
 		projects: {
 			section: "Proyectos",
 			title: "Una seleccion de mis proyectos recientes y personales",
+			description:
+				"He trabajado en proyectos que van desde aplicaciones móviles hasta sitios web empresariales.",
 			viewProject: "Ver proyecto",
 			viewAll: "Ver todos los proyectos",
 			pollosControlDescription:
@@ -125,6 +129,8 @@ export const ui = {
 		},
 		contact: {
 			section: "Contact",
+			title1: "Let's talk about your",
+			title2: "next project",
 			description:
 				"I am available for freelance work and full-time roles. If you have a project that needs a creative touch, I would love to hear about it.",
 			inputNamePlaceholder: "Jhon Doe",
@@ -174,6 +180,8 @@ export const ui = {
 		projects: {
 			section: "Projects",
 			title: "A selection of my recent and personal projects",
+			description:
+				"I have worked on projects ranging from mobile applications to enterprise websites.",
 			viewProject: "View project",
 			viewAll: "View all projects",
 			pollosControlDescription:
