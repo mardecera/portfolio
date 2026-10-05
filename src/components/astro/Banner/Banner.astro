@@ -1,10 +1,10 @@
 ---
+import WhatsAppIcon from "@/assets/svg/whatsapp.svg"
 import MaxContainer from "@/components/astro/MaxContainer.astro"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
 import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
-import WhatsAppIcon from "@/assets/svg/whatsapp.svg"
 import { getLocaleFromPath } from "@/utils/locale.utils"
-import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)

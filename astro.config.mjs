@@ -1,5 +1,5 @@
-import netlify from "@astrojs/netlify"
 import react from "@astrojs/react"
+import vercel from "@astrojs/vercel"
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, envField } from "astro/config"
 import svgr from "vite-plugin-svgr"
@@ -37,6 +37,6 @@ export default defineConfig({
 		},
 		plugins: [tailwindcss(), svgr()],
 	},
-	adapter: netlify(),
-	output: "server",
+	adapter: vercel(),
+	output: "static",
 })

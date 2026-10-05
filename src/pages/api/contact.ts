@@ -4,9 +4,9 @@ import { RESEND_API_KEY } from "astro:env/server"
 import type { APIRoute } from "astro"
 import { Resend } from "resend"
 
+import ContactEmailTemplate from "@/emails/Contact/Contact.email"
+import ThanksEmailTemplate from "@/emails/Thanks/Thanks.email"
 import { contactSchema } from "@/schemes/api/contact.scheme"
-import ContactEmailTemplate from "emails/Contact/Contact.email"
-import ThanksEmailTemplate from "emails/Thanks/Thanks.email"
 import { renderToStaticMarkup } from "react-dom/server"
 
 const resend = new Resend(RESEND_API_KEY)

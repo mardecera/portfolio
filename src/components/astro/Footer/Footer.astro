@@ -1,14 +1,14 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n"
 import BracketsIcon from "@/assets/brackets.svg"
+import GithubIcon from "@/assets/svg/github.svg"
+import LinkedinIcon from "@/assets/svg/linkedin.svg"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
+import LocaleSwitcher from "@/components/react/LocaleSwitcher/LocaleSwitcher"
 import { CONTACT } from "@/constants/contact"
 import { useTranslations } from "@/i18n/utils"
 import { getLocaleFromPath, stripLocaleFromPath } from "@/utils/locale.utils"
-import LocaleSwitcher from "@/components/react/LocaleSwitcher/LocaleSwitcher"
 import { getLinks } from "../Header/Header.helpers"
-import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
-import GithubIcon from "@/assets/svg/github.svg"
-import LinkedinIcon from "@/assets/svg/linkedin.svg"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const relativePath = stripLocaleFromPath(Astro.url.pathname)
