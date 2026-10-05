@@ -1,16 +1,16 @@
 ---
 import { Picture } from "astro:assets"
 import ExternalLinkSVG from "@/assets/svg/external-link.svg"
+import GithubIcon from "@/assets/svg/github.svg"
 // import Button from "@/components/astro/Button"
 import Tag from "@/components/astro/Tag/Tag.astro"
 import TitleOfSection from "@/components/astro/TitleOfSection.astro"
+import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
 import { CONTACT } from "@/constants/contact"
 import { getProjects } from "@/constants/projects"
 import { useTranslations } from "@/i18n/utils"
 import GithubOutline from "@/ui/icons/GithubOutline.astro"
 import { getLocaleFromPath } from "@/utils/locale.utils"
-import ButtonLink from "@/components/react/ButtonLink/ButtonLink"
-import GithubIcon from "@/assets/svg/github.svg"
 
 const currentLocale = getLocaleFromPath(Astro.url.pathname)
 const t = useTranslations(currentLocale)
