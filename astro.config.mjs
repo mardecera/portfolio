@@ -24,6 +24,14 @@ export default defineConfig({
 				context: "server",
 				access: "secret",
 			}),
+			CONTACT_FROM: envField.string({
+				context: "server",
+				access: "secret",
+			}),
+			CONTACT_REPLY_TO: envField.string({
+				context: "server",
+				access: "secret",
+			}),
 		},
 	},
 	integrations: [react()],
