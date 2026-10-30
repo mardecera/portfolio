@@ -1,0 +1,59 @@
+---
+import { CONTACT } from "@entities/profile"
+import { formatPhoneNumber } from "@entities/profile"
+import ContactForm from "@features/send-contact"
+import MailIcon from "@icons/mail.svg"
+import PhoneIcon from "@icons/phone.svg"
+import PinIcon from "@icons/pin.svg"
+import { useTranslations } from "@shared/i18n"
+import { getLocaleFromPath } from "@shared/lib/locale"
+import SectionLabel from "@shared/ui/section-label"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const phone = formatPhoneNumber(CONTACT.phoneNumber, "51")
+---
+
+<div id="contact" class="full-bleed bg-gray-100 py-8 sm:py-16">
+	<div class="content-grid">
+		<SectionLabel>{t("contact.section")}</SectionLabel>
+		<div class="mt-4 flex flex-wrap gap-10">
+			<div class="flex flex-1 flex-col gap-4">
+				<div class="space-y-6">
+					<h3 class="font-bold text-[44px] leading-12">
+						{t("contact.title1")}
+						<span class="text-primary-500">{t("contact.title2")}</span>
+					</h3>
+					<p class="font-normal leading-7.25 text-gray-500">
+						{t("contact.description")}
+					</p>
+				</div>
+				<div>
+					<ul class="flex list-none flex-col gap-2 leading-6.5">
+						<li class="flex items-center gap-4">
+							<div class="p-3 bg-black aspect-square text-white rounded-xl">
+								<MailIcon class="w-4 h-4" />
+							</div>
+							<span>{CONTACT.email}</span>
+						</li>
+						<li class="flex items-center gap-4">
+							<div class="p-3 bg-black aspect-square text-white rounded-xl">
+								<PhoneIcon class="w-4 h-4" />
+							</div>
+							<span>{phone}</span>
+						</li>
+						<li class="flex items-center gap-4">
+							<div class="p-3 bg-black aspect-square text-white rounded-xl">
+								<PinIcon class="w-4 h-4" />
+							</div>
+							<span>{CONTACT.address}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="flex-1 sm:-mt-5">
+				<ContactForm />
+			</div>
+		</div>
+	</div>
+</div>

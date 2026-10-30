@@ -1,0 +1,33 @@
+---
+description: Arquitectura Feature-Sliced Design del portafolio
+alwaysApply: true
+---
+
+# Arquitectura
+
+Capas, de arriba a abajo. Una capa solo importa las que están debajo. Dos slices de la misma capa no se importan.
+
+`app` → `views` → `widgets` → `features` → `entities` → `shared`
+
+`src/pages` es el enrutado de Astro. Una ruta solo monta una vista y el layout. La UI de negocio no vive ahí.
+
+- Sección de página: `src/widgets/<slice>`.
+- Acción del usuario (enviar, cambiar idioma): `src/features/<slice>`.
+- Dato de negocio (proyecto, skill, perfil): `src/entities/<slice>`.
+- Control visual, icono, `cn`, cliente HTTP, i18n: `src/shared`.
+- Shell del documento y estilos globales: `src/app`.
+
+Un slice agrupa `.astro` y `.tsx`. Segmentos: `ui`, `model`, `api`, `i18n`. La API pública es `index.ts`. Quien use el slice importa `@widgets/hero`, no un archivo interno.
+
+```ts
+// válido: el widget usa una feature y shared
+import ContactForm from "@features/send-contact"
+import Button from "@shared/ui/button"
+
+// inválido: dos widgets de la misma capa
+import { getSectionLinks } from "@widgets/header/ui/Header.helpers"
+```
+
+Los anclas compartidos viven en `@shared/config/section-links`.
+
+`shared/i18n/ui.ts` es el único archivo de `shared` que importa capas superiores, y solo diccionarios. La isla de contacto importa `@app/providers` porque el árbol de React no hereda el layout de Astro.

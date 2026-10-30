@@ -1,0 +1,33 @@
+---
+description: TSDoc en español para funciones y componentes
+alwaysApply: true
+---
+
+# TSDoc
+
+Toda función nueva o modificada lleva TSDoc en español: una descripción y un `@param` por cada parámetro. Si no recibe parámetros, basta la descripción.
+
+Si el argumento es `props`, documenta cada prop como `@param props.nombre`. En un componente con `ref`, documenta también `@param ref`.
+
+Aplica a componentes, hooks, helpers y callbacks con nombre. No documentes constantes, diccionarios i18n ni esquemas.
+
+```ts
+/**
+ * Devuelve las clases de una variante de botón.
+ *
+ * @param variant - Variante visual: primary, secondary u outline.
+ */
+export const getButtonVariantClass = (variant: VariantButton) => {
+	return buttonVariantClasses[variant]
+}
+
+/**
+ * Botón de acción con variante, tamaño e icono opcional.
+ *
+ * @param props.variant - Variante visual. Por defecto, primary.
+ * @param props.children - Contenido del botón.
+ */
+const Button = (props: ButtonProps) => {
+	return <button>{props.children}</button>
+}
+```

@@ -1,0 +1,8 @@
+---
+import ContactFormIsland from "@features/send-contact/ui/ContactFormIsland"
+import { getLocaleFromPath } from "@shared/lib/locale"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+---
+
+<ContactFormIsland client:load locale={currentLocale} />

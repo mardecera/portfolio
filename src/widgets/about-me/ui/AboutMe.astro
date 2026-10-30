@@ -1,0 +1,34 @@
+---
+import DownloadIcon from "@icons/download.svg"
+import { useTranslations } from "@shared/i18n"
+import { getLocaleFromPath } from "@shared/lib/locale"
+import ButtonLink from "@shared/ui/button-link"
+import SectionLabel from "@shared/ui/section-label"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+---
+
+<div id="aboutme" class="full-bleed bg-white w-full py-16 sm:py-32">
+	<div class="content-grid">
+		<div class="flex flex-col gap-4 w-full">
+			<SectionLabel>{t("aboutMe.section")}</SectionLabel>
+			<h2 class="font-bold text-[36px]">{t("aboutMe.title")}</h2>
+			<div class="leading-7.25 space-y-2 max-w-225">
+				<p>{t("aboutMe.descriptionOne")}</p>
+				<p>{t("aboutMe.descriptionTwo")}</p>
+				<p>{t("aboutMe.descriptionThree")}</p>
+			</div>
+			<div class="cta">
+				<ButtonLink
+					download="jonathan-cervantes-cv.pdf"
+					href="/assets/documents/jonathan-cervantes-cv.pdf"
+					variant="outline"
+				>
+					{t("aboutMe.download")}
+					<DownloadIcon class="w-4 h-4" />
+				</ButtonLink>
+			</div>
+		</div>
+	</div>
+</div>

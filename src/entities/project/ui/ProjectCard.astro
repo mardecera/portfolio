@@ -1,0 +1,58 @@
+---
+import { Picture } from "astro:assets"
+import ExternalLinkIcon from "@icons/external-link.svg"
+import GithubIcon from "@icons/github.svg"
+import ButtonLink from "@shared/ui/button-link"
+import Tag from "@shared/ui/tag"
+import type { ProjectType } from "../model/project.types"
+
+interface Props {
+	project: ProjectType
+	viewProjectLabel: string
+}
+
+const { project, viewProjectLabel } = Astro.props
+---
+
+<div
+	class="flex w-full max-w-86 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white"
+>
+	<div class="aspect-video overflow-hidden">
+		<Picture
+			src={project.image}
+			alt={project.title}
+			formats={["webp", "avif"]}
+		/>
+	</div>
+	<div
+		class="flex flex-1 flex-col justify-between gap-6 border-t border-gray-200 p-8"
+	>
+		<div class="space-y-5">
+			<h3 class="text-[24px] leading-4 font-bold text-black">
+				{project.title}
+			</h3>
+			<p class="leading-5.5 text-gray-500">{project.description}</p>
+			<span class="mt-2 flex flex-wrap gap-2">
+				{project.technologies.map((tag) => <Tag variant="dark">{tag}</Tag>)}
+			</span>
+		</div>
+		<div class="flex justify-between">
+			<ButtonLink
+				href={project.pageUrl ?? ""}
+				isDisabled={project.pageUrl === null}
+				className="bg-black text-white hover:bg-gray-900"
+			>
+				<span>{viewProjectLabel}</span>
+				<ExternalLinkIcon class="w-5 h-5" />
+			</ButtonLink>
+			<ButtonLink
+				href={project.codeUrl ?? ""}
+				isDisabled={project.codeUrl === null}
+				variant="outline"
+				className="w-11 h-11 px-0"
+			>
+				<GithubIcon class="w-5 h-5" />
+			</ButtonLink>
+		</div>
+	</div>
+</div>
