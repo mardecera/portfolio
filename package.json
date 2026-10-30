@@ -9,7 +9,7 @@
 		"astro": "astro",
 		"check": "biome check ./src",
 		"format": "biome check --write .",
-		"email": "email dev --dir src/emails --port 3001",
+		"email": "email dev --dir src/features/send-contact/api/emails --port 3001",
 		"clean": "bash scripts/clean.sh",
 		"ri": "pnpm run clean && pnpm install",
 		"postinstall": "astro sync"

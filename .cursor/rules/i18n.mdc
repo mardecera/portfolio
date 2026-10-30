@@ -1,0 +1,27 @@
+---
+description: Textos de interfaz en español e inglés
+globs: src/**/*.{astro,ts,tsx}
+alwaysApply: false
+---
+
+# i18n
+
+Cada texto visible va en el `i18n.ts` del slice, en `es` y en `en`, con la misma forma de claves (`hero.badge`, `contact.status.error`).
+
+`src/shared/i18n/ui.ts` une esos objetos. Un namespace nuevo se agrega ahí con un spread. No hace falta otro sistema de traducción.
+
+En la UI:
+
+```astro
+---
+import { useTranslations } from "@shared/i18n"
+import { getLocaleFromPath } from "@shared/lib/locale"
+
+const locale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(locale)
+---
+
+<h2>{t("hero.badge")}</h2>
+```
+
+No dejes el texto en el componente. No agregues una clave en un solo idioma. El locale por defecto es `es`, sin prefijo en la URL; `en` vive en `/en`.

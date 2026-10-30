@@ -1,0 +1,29 @@
+---
+description: Tokens y patrones visuales del portafolio
+globs: src/**/*.{astro,tsx,css}
+alwaysApply: false
+---
+
+# Diseño
+
+Los tokens están en `src/app/styles/theme.css`. Un color nuevo se agrega ahí.
+
+- Acento: `primary` (`primary-500` es el violeta de acción).
+- Éxito: `success`. Neutros: `neutral`. Fondo base: `black` (`#080808`).
+- Ancho de contenido: `--content-max-width: 1080px`. Breakpoint extra: `tiny` a 425px.
+- Fondo de modal: `overlay`.
+- Fuente: Geist, ya cargada en el layout.
+
+El contenido centrado de la home va en `.content-grid`. Un bloque a ancho completo usa `.full-bleed`.
+
+Antes de crear un control, revisa `src/shared/ui`: Button, ButtonLink, Input, Textarea, Tag, Badge, Link, Modal, Dropdown, ContentContainer, SectionLabel.
+
+```astro
+<!-- válido -->
+<h2 class="text-primary-500">{title}</h2>
+
+<!-- inválido: hex suelto cuando ya existe el token -->
+<h2 class="text-[#5a37ff]">{title}</h2>
+```
+
+La home es fondo oscuro con bloques blancos de contraste. El acento es violeta, no una segunda paleta.

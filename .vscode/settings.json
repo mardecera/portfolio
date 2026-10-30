@@ -1,13 +1,14 @@
 {
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "biomejs.biome",
-	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
 	"files.eol": "\n",
 	"[astro]": {
 		"editor.defaultFormatter": "astro-build.astro-vscode"
 	},
 	"editor.fontSize": 15,
 	"[postcss]": {
-		"editor.defaultFormatter": "stylelint.vscode-stylelint"
-	}
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"css.customData": [".vscode/css-custom-data.json"]
 }

@@ -1,20 +1,8 @@
 ---
-import Banner from "@/components/astro/Banner/Banner.astro"
-import AboutMe from "@/components/astro/Sections/AboutMe.astro"
-import Contact from "@/components/astro/Sections/Contact.astro"
-import Hero from "@/components/astro/Sections/Hero"
-import Projects from "@/components/astro/Sections/Projects.astro"
-import Skills from "@/components/astro/Sections/Skills/Skills.astro"
-import Layout from "@/layouts/Layout.astro"
+import Layout from "@app/layouts/Layout.astro"
+import HomePage from "@views/home"
 ---
 
 <Layout>
-	<div class="wrapper">
-		<Hero />
-		<AboutMe />
-		<Skills />
-		<Projects />
-		<Banner />
-		<Contact />
-	</div>
+	<HomePage />
 </Layout>

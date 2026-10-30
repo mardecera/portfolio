@@ -1,0 +1,43 @@
+---
+import { CONTACT } from "@entities/profile"
+import ProjectCard, { getProjects } from "@entities/project"
+import { useTranslations } from "@shared/i18n"
+import { getLocaleFromPath } from "@shared/lib/locale"
+import ButtonLink from "@shared/ui/button-link"
+import SectionLabel from "@shared/ui/section-label"
+
+const currentLocale = getLocaleFromPath(Astro.url.pathname)
+const t = useTranslations(currentLocale)
+const PROJECTS = getProjects(currentLocale)
+---
+
+<div id="projects" class="full-bleed w-full bg-white py-16 sm:py-32">
+	<div class="content-grid">
+		<div class="flex flex-col justify-center items-center gap-6 text-center">
+			<SectionLabel>{t("projects.section")}</SectionLabel>
+			<h2 class="text-[44px] leading-12 font-bold">
+				{t("projects.title")}
+			</h2>
+			<span class="font-normal text-[20px] leading-8 text-gray-400">
+				{t("projects.description")}
+			</span>
+		</div>
+		<div class="space-y-20 mt-20">
+			<div class="flex h-fit flex-wrap justify-center gap-6">
+				{
+					PROJECTS.map((project) => (
+						<ProjectCard
+							project={project}
+							viewProjectLabel={t("projects.viewProject")}
+						/>
+					))
+				}
+			</div>
+			<div class="mt-4 text-center">
+				<ButtonLink href={CONTACT.social.github} variant="outline" className="">
+					{t("projects.viewAll")}
+				</ButtonLink>
+			</div>
+		</div>
+	</div>
+</div>

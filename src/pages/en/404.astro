@@ -1,34 +1,8 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n"
-import MaxContainer from "@/components/astro/MaxContainer.astro"
-import { useTranslations } from "@/i18n/utils"
-import Layout from "@/layouts/Layout.astro"
-import { getLocaleFromPath } from "@/utils/locale.utils"
-
-const currentLocale = getLocaleFromPath(Astro.url.pathname)
-const t = useTranslations(currentLocale)
+import Layout from "@app/layouts/Layout.astro"
+import NotFoundPage from "@views/not-found"
 ---
 
 <Layout>
-	<section
-		class="flex h-[90dvh] w-full items-center justify-center bg-[#f4f4f5] text-center"
-	>
-		<MaxContainer>
-			<div>
-				<h1 class="my-0 text-[10rem]">404</h1>
-				<h2 class="my-0 mb-4 text-[clamp(1.75rem,4vw,2.5rem)]">
-					{t("notFound.title")}
-				</h2>
-				<p class="mx-auto mb-6 max-w-152 text-gray-600">
-					{t("notFound.description")}
-				</p>
-				<a
-					href={getRelativeLocaleUrl(currentLocale)}
-					class="inline-flex min-h-11 items-center justify-center rounded-full bg-black px-5 font-semibold text-white no-underline"
-				>
-					{t("notFound.cta")}
-				</a>
-			</div>
-		</MaxContainer>
-	</section>
+	<NotFoundPage />
 </Layout>
